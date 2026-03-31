@@ -10,7 +10,7 @@ import {
   Activity, ArrowRight, CheckCircle2, ChevronDown,
   Hotel, Plus, TrendingUp, Users, Zap, DollarSign
 } from "lucide-react";
-import heroImage from "@/assets/images/hero-hotel.png";
+import heroImage from "@/assets/images/biohack-lab-front.jpg";
 import hbotImage from "@/assets/images/hbot-chamber.jpg";
 import redLightImage from "@/assets/images/redlight-therapy.jpg";
 import saunaImage from "@/assets/images/infrared-sauna.jpg";
@@ -68,7 +68,7 @@ export default function Hotels() {
               </motion.h1>
               
               <motion.p variants={FADE_UP} className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed">
-                Install a turnkey BH Labs Recovery Pod in your hotel. Generate $15K+ monthly revenue with zero additional staff. Clinical biohacking meets luxury hospitality.
+                Install a turnkey BH Labs Recovery Pod in your hotel. Generate <span className="text-primary font-bold text-2xl md:text-3xl">$25K+ monthly revenue</span> with zero additional staff. Clinical biohacking meets luxury hospitality.
               </motion.p>
               
               <motion.div variants={FADE_UP} className="flex flex-col sm:flex-row gap-4">
