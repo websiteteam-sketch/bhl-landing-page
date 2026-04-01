@@ -72,3 +72,15 @@ id = "VboYJJtYzkttpfQyxYwlh"
 uri = "file://artifacts/hotel-deck/public/luxury-resort.png"
 type = "image"
 title = "generated_image"
+
+[[generated]]
+id = "Cyf2r2gntCuy6TVHqh-eH"
+uri = "file://artifacts/apartment-deck/public/hero-apartment.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "eJBuK1B1At7d2NuGywqEv"
+uri = "file://artifacts/apartment-deck/public/solution-bg.png"
+type = "image"
+title = "generated_image"

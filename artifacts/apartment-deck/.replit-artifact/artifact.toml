@@ -1,0 +1,31 @@
+kind = "slides"
+previewPath = "/apartment-deck/"
+title = "BH Labs Apartment Recovery Pod Deck"
+version = "1.0.0"
+id = "artifacts/apartment-deck"
+router = "path"
+
+[[integratedSkills]]
+name = "slides"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/apartment-deck/" ]
+localPort = 24300
+
+[services.development]
+run = "pnpm --filter @workspace/apartment-deck run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/apartment-deck", "run", "build" ]
+publicDir = "artifacts/apartment-deck/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24300"
+BASE_PATH = "/apartment-deck/"

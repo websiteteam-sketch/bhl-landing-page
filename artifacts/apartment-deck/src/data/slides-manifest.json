@@ -1,0 +1,66 @@
+[
+  {
+    "id": "a1b2c3d4-1111-4aaa-8000-000000000001",
+    "position": 1,
+    "filepath": "src/pages/slides/TitleSlide.tsx",
+    "title": "The Recovery Pod",
+    "description": "Title slide with BH Labs branding and apartment building hero imagery",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-2222-4aaa-8000-000000000002",
+    "position": 2,
+    "filepath": "src/pages/slides/OpportunitySlide.tsx",
+    "title": "The Opportunity",
+    "description": "Residential wellness market stats and amenity differentiation angle",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-3333-4aaa-8000-000000000003",
+    "position": 3,
+    "filepath": "src/pages/slides/ProblemSlide.tsx",
+    "title": "The Problem",
+    "description": "Amenity arms race, resident churn, and underperforming common spaces",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-4444-4aaa-8000-000000000004",
+    "position": 4,
+    "filepath": "src/pages/slides/SolutionSlide.tsx",
+    "title": "The Solution",
+    "description": "Recovery Pod adapted for apartment buildings with key specs",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-5555-4aaa-8000-000000000005",
+    "position": 5,
+    "filepath": "src/pages/slides/ExperienceSlide.tsx",
+    "title": "Resident Experience",
+    "description": "Session options and monthly wellness fee model for residents",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-6666-4aaa-8000-000000000006",
+    "position": 6,
+    "filepath": "src/pages/slides/ROISlide.tsx",
+    "title": "ROI Projection",
+    "description": "Static ROI table with apartment-specific economics and property value increase",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-7777-4aaa-8000-000000000007",
+    "position": 7,
+    "filepath": "src/pages/slides/CompetitiveSlide.tsx",
+    "title": "Competitive Differentiation",
+    "description": "Traditional gym vs boutique wellness studio vs Recovery Pod comparison",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-8888-4aaa-8000-000000000008",
+    "position": 8,
+    "filepath": "src/pages/slides/ClosingSlide.tsx",
+    "title": "Get Started",
+    "description": "Closing slide with BH Labs branding and contact information",
+    "speakerNotes": ""
+  }
+]
