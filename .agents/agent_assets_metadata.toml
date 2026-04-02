@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "I0yitfD90304fDQEIqO_1"
@@ -84,3 +83,9 @@ id = "eJBuK1B1At7d2NuGywqEv"
 uri = "file://artifacts/apartment-deck/public/solution-bg.png"
 type = "image"
 title = "generated_image"
+
+[[outputs]]
+id = "T2vQ3mJ8fq6aiam_Rqo9q"
+uri = "file://.local/outputs/Page-Builder.pptx"
+type = "slides"
+title = "Page Builder.pptx"

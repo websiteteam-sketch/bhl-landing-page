@@ -1,0 +1,139 @@
+Update my existing landing page project based on the following requirements.
+
+Important:
+- Keep the current visual style, layout structure, spacing, branding, and overall design system consistent with the existing page.
+- Do not make the page look like a completely new website.
+- Improve the content structure, audience targeting, and forms.
+- Make the updates directly in the existing project.
+
+Main goal:
+The current page feels like it mixes different audiences together. I need the landing pages to be clearer, more conversion-focused, and better aligned with each audience and CTA.
+
+What to change:
+
+1. Separate the audiences properly
+Create or update dedicated landing pages for these audiences:
+- Hotels / Resorts
+- Fitness / Padel Clubs
+- Luxury Residential / HOAs
+- University Athletics
+
+Do not combine these audiences into one page unless absolutely necessary.
+Each page should have:
+- A headline tailored to that audience
+- A subheadline tailored to that audience
+- Value proposition bullets specific to that audience
+- Relevant ROI framing for that audience
+- A CTA that matches the page intent
+
+2. Keep one primary CTA per page
+Do not use too many competing CTA buttons on the same page.
+Each page should focus on one main CTA only.
+
+Use these CTA directions:
+- Hotels / Resorts: Request a Revenue Projection or Request a Recovery Pod Proposal
+- Fitness / Padel Clubs: Get Your Custom Recovery Pod
+- Luxury Residential / HOAs: Request a Property Assessment
+- University Athletics: Download the Athletics Recovery Brief
+
+3. Update the forms so they match the page promise
+Right now, the forms are too generic.
+Each form should collect the information needed based on the audience and offer.
+
+Form fields by page:
+
+Hotels / Resorts
+- First Name
+- Last Name
+- Work Email
+- Phone
+- Hotel / Resort Name
+- Role / Title
+- Property Location
+- Number of Rooms
+- Average Occupancy Rate
+- Do you already have a spa, gym, or wellness area?
+- Estimated available space for the pod
+- Target timeline
+
+Fitness / Padel Clubs
+- First Name
+- Last Name
+- Work Email
+- Phone
+- Gym / Club Name
+- Role / Title
+- Number of Members
+- Number of Locations
+- Type of Facility
+- Current Recovery Amenities
+- Available Space
+- Main Goal / Interest
+- Target timeline
+
+Luxury Residential / HOAs
+- First Name
+- Last Name
+- Work Email
+- Phone
+- Property / Community Name
+- Role / Title
+- Type of Property
+- Number of Units
+- Current Amenities
+- Available Space
+- Do residents already pay amenity or wellness fees?
+- Decision Stage
+- Timeline
+
+University Athletics
+If the CTA is a brief download, keep the form shorter:
+- First Name
+- Last Name
+- Work Email
+- University / Program Name
+- Role / Title
+- Sport / Department
+
+If there is also a proposal/demo flow, include:
+- Number of Athletes
+- Current Recovery Setup
+- Current Annual Recovery Spend
+- Facility Space Available
+- Budget Cycle / Purchase Window
+- Timeline
+
+4. Match the form length to the CTA
+Use this rule:
+- For top-of-funnel CTAs like “Download Brief,” use a shorter form
+- For proposal, assessment, or revenue projection CTAs, use a more detailed qualification form
+
+5. Improve conversion logic
+Make sure each page feels built for that buyer.
+That means:
+- Hotels should focus on revenue, room count, occupancy, and unused space
+- Fitness clubs should focus on retention, premium memberships, and member value
+- Residential / HOA should focus on property differentiation, resident experience, and amenity value
+- University athletics should focus on athlete performance, recovery access, cost savings, and department decision-making
+
+6. Social proof
+Keep the existing BH Labs credibility and social proof section, but make sure it feels relevant to the audience on each page.
+Do not make the same exact proof block feel copy-pasted if it can be improved with slight audience-specific wording.
+
+7. UX and structure
+- Keep the page clean and premium
+- Make the form easy to complete
+- Preserve responsive behavior
+- Keep sections organized and conversion-focused
+- Do not overcomplicate the design
+
+8. Output expectation
+Please update the project and provide:
+- The revised structure for each landing page
+- Updated CTA text per page
+- Updated form fields per page
+- Any recommended section title changes
+- Any notes on where the existing page currently causes audience confusion
+
+Important final instruction:
+Do not give me just strategy notes. I need actual implementation-ready updates in the project content and structure while keeping the existing design style.
