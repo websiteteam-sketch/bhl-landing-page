@@ -148,6 +148,24 @@ Slide deck artifact for BH Labs Recovery Pod generic hotel pitch. 9 slides cover
 - Generic language (no chain-specific references) for broad hotel/resort market
 - Exportable to PPTX via slides viewer
 
+### `artifacts/fitness-landing` (`@workspace/fitness-landing`)
+
+Standalone landing page for BH Labs Recovery Pod — Fitness and Sports Club vertical. Designed as a single-page ad campaign destination with no navigation to other verticals.
+
+- Single-page app (no router), renders fitness page directly
+- Minimal sticky header: BH Labs logo + green "View Equipment" button + "Request a Meeting" button
+- No navbar links, no footer — fully standalone for paid ad traffic
+- All CTAs read "Request a Meeting"
+- Content sections: Hero → Summary bar → Value proposition (4 stat cards) → Loss aversion → Equipment grid (7 modalities) → Turnkey installation → Social proof → FAQ → Contact form
+- Fitness-specific contact form with:
+  - Role dropdown (Owner, General Manager, etc.)
+  - Facility Type dropdown (Gym, Padel Club, CrossFit, etc.)
+  - Current Recovery Amenities multi-select checkboxes
+  - Available Space number-only input
+  - UTM parameter capture
+- SEO: JSON-LD (Organization, Product, FAQPage, WebPage), OG/Twitter meta, canonical URL
+- Same visual theme and branding as hotel-landing artifact
+
 ### `scripts` (`@workspace/scripts`)
 
 Utility scripts package. Each script is a `.ts` file in `src/` with a corresponding npm script in `package.json`. Run scripts via `pnpm --filter @workspace/scripts run <script>`. Scripts can import any workspace package (e.g., `@workspace/db`) by adding it as a dependency in `scripts/package.json`.
