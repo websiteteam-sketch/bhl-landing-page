@@ -8,66 +8,79 @@ import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { motion } from "framer-motion";
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CITIES_BY_STATE } from "@/data/cities-by-state";
+
+const US_STATES = [
+  "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia",
+  "Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland",
+  "Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey",
+  "New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina",
+  "South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"
+];
+
+const req = (msg: string) => z.string().min(1, msg);
 
 const baseSchema = {
-  firstName: z.string().min(2, "First name is required"),
-  lastName: z.string().min(2, "Last name is required"),
+  firstName: req("First name is required"),
+  lastName: req("Last name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Phone number is required"),
-  property: z.string().min(2, "Name is required"),
-  role: z.string().min(2, "Role/Title is required"),
+  property: req("Name is required"),
+  role: req("Role/Title is required"),
 };
 
 const hotelSchema = z.object({
   ...baseSchema,
-  propertyLocation: z.string().optional(),
-  numberOfRooms: z.string().optional(),
-  averageOccupancy: z.string().optional(),
-  existingSpaGym: z.string().optional(),
-  estimatedPodSpace: z.string().optional(),
-  targetTimeline: z.string().optional(),
+  propertyState: req("State is required"),
+  propertyCity: req("City is required"),
+  numberOfRooms: req("Number of rooms is required"),
+  averageOccupancy: req("Occupancy rate is required"),
+  existingSpaGym: req("This field is required"),
+  estimatedPodSpace: req("Estimated pod space is required"),
+  targetTimeline: req("Timeline is required"),
 });
 
 const fitnessSchema = z.object({
   ...baseSchema,
-  numberOfMembers: z.string().optional(),
-  numberOfLocations: z.string().optional(),
-  facilityType: z.string().optional(),
-  currentRecoveryAmenities: z.string().optional(),
-  availableSpace: z.string().optional(),
-  mainGoal: z.string().optional(),
-  targetTimeline: z.string().optional(),
+  numberOfMembers: req("Number of members is required"),
+  numberOfLocations: req("Number of locations is required"),
+  facilityType: req("Facility type is required"),
+  currentRecoveryAmenities: req("Please select at least one option"),
+  availableSpace: req("Available space is required"),
+  mainGoal: req("Main goal is required"),
+  targetTimeline: req("Timeline is required"),
 });
 
 const residentialSchema = z.object({
   ...baseSchema,
-  propertyType: z.string().optional(),
-  numberOfUnits: z.string().optional(),
-  currentAmenities: z.string().optional(),
-  availableSpace: z.string().optional(),
-  wellnessFees: z.string().optional(),
-  decisionStage: z.string().optional(),
-  timeline: z.string().optional(),
+  propertyType: req("Property type is required"),
+  numberOfUnits: req("Number of units is required"),
+  currentAmenities: req("Please select at least one option"),
+  availableSpace: req("Available space is required"),
+  wellnessFees: req("This field is required"),
+  amenityFeeAmount: z.string().optional(),
+  decisionStage: req("Decision stage is required"),
+  timeline: req("Timeline is required"),
 });
 
 const athleticsBriefSchema = z.object({
-  firstName: z.string().min(2, "First name is required"),
-  lastName: z.string().min(2, "Last name is required"),
+  firstName: req("First name is required"),
+  lastName: req("Last name is required"),
   email: z.string().email("Invalid email address"),
-  property: z.string().min(2, "University/Program name is required"),
-  role: z.string().min(2, "Role/Title is required"),
-  sportDepartment: z.string().optional(),
+  property: req("University/Program name is required"),
+  role: req("Role/Title is required"),
+  sportDepartment: req("Sport/Department is required"),
 });
 
 const athleticsFullSchema = z.object({
   ...baseSchema,
-  sportDepartment: z.string().optional(),
-  numberOfAthletes: z.string().optional(),
-  currentRecoverySetup: z.string().optional(),
-  annualRecoverySpend: z.string().optional(),
-  facilitySpace: z.string().optional(),
-  budgetCycle: z.string().optional(),
-  timeline: z.string().optional(),
+  sportDepartment: req("Sport/Department is required"),
+  numberOfAthletes: req("Number of athletes is required"),
+  currentRecoverySetup: req("Current recovery setup is required"),
+  annualRecoverySpend: req("Annual recovery spend is required"),
+  facilitySpace: req("Facility space is required"),
+  budgetCycle: req("Budget cycle is required"),
+  timeline: req("Timeline is required"),
 });
 
 type FormType = "hotel" | "fitness" | "residential" | "athletics-brief" | "athletics-full";
@@ -86,25 +99,15 @@ function getDefaults(type: FormType): Record<string, string> {
   const base = { firstName: "", lastName: "", email: "", phone: "", property: "", role: "" };
   switch (type) {
     case "hotel":
-      return { ...base, propertyLocation: "", numberOfRooms: "", averageOccupancy: "", existingSpaGym: "", estimatedPodSpace: "", targetTimeline: "" };
+      return { ...base, propertyState: "", propertyCity: "", numberOfRooms: "", averageOccupancy: "", existingSpaGym: "", estimatedPodSpace: "", targetTimeline: "" };
     case "fitness":
       return { ...base, numberOfMembers: "", numberOfLocations: "", facilityType: "", currentRecoveryAmenities: "", availableSpace: "", mainGoal: "", targetTimeline: "" };
     case "residential":
-      return { ...base, propertyType: "", numberOfUnits: "", currentAmenities: "", availableSpace: "", wellnessFees: "", decisionStage: "", timeline: "" };
+      return { ...base, propertyType: "", numberOfUnits: "", currentAmenities: "", availableSpace: "", wellnessFees: "", amenityFeeAmount: "", decisionStage: "", timeline: "" };
     case "athletics-brief":
       return { firstName: "", lastName: "", email: "", property: "", role: "", sportDepartment: "" };
     case "athletics-full":
       return { ...base, sportDepartment: "", numberOfAthletes: "", currentRecoverySetup: "", annualRecoverySpend: "", facilitySpace: "", budgetCycle: "", timeline: "" };
-  }
-}
-
-function getSubmitLabel(type: FormType) {
-  switch (type) {
-    case "hotel": return "Request a Revenue Projection";
-    case "fitness": return "Get Your Custom Recovery Pod";
-    case "residential": return "Request a Property Assessment";
-    case "athletics-brief": return "Download the Athletics Recovery Brief";
-    case "athletics-full": return "Request a Proposal";
   }
 }
 
@@ -134,6 +137,78 @@ function getUTMParams(): Record<string, string> {
   return params;
 }
 
+function SelectField({ value, onChange, options, placeholder, disabled }: { value: string; onChange: (v: string) => void; options: string[]; placeholder?: string; disabled?: boolean }) {
+  return (
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      disabled={disabled}
+      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none"
+      style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em', paddingRight: '2.5rem' }}
+    >
+      <option value="">{placeholder || "Select..."}</option>
+      {options.map((opt) => (
+        <option key={opt} value={opt}>{opt}</option>
+      ))}
+    </select>
+  );
+}
+
+function MultiCheckboxField({ value, onChange, options }: { value: string; onChange: (v: string) => void; options: string[] }) {
+  const selected = value ? value.split(", ").filter(Boolean) : [];
+
+  const toggle = (opt: string) => {
+    let next: string[];
+    if (opt === "None") {
+      next = selected.includes("None") ? [] : ["None"];
+    } else {
+      const withoutNone = selected.filter(s => s !== "None");
+      next = withoutNone.includes(opt) ? withoutNone.filter(s => s !== opt) : [...withoutNone, opt];
+    }
+    onChange(next.join(", "));
+  };
+
+  return (
+    <div className="grid grid-cols-2 gap-2">
+      {options.map((opt) => (
+        <label key={opt} className="flex items-center gap-2 text-sm cursor-pointer py-1">
+          <input
+            type="checkbox"
+            checked={selected.includes(opt)}
+            onChange={() => toggle(opt)}
+            className="rounded border-input h-4 w-4 text-primary focus:ring-primary"
+          />
+          <span className="text-foreground">{opt}</span>
+        </label>
+      ))}
+    </div>
+  );
+}
+
+function NumberInputWithSuffix({ value, onChange, placeholder, suffix, min, max }: { value: string; onChange: (v: string) => void; placeholder?: string; suffix?: string; min?: number; max?: number }) {
+  return (
+    <div className="relative">
+      <Input
+        type="number"
+        value={value}
+        onChange={(e) => {
+          let val = e.target.value;
+          if (max !== undefined && Number(val) > max) val = String(max);
+          if (min !== undefined && Number(val) < min && val !== "") val = String(min);
+          onChange(val);
+        }}
+        placeholder={placeholder}
+        min={min}
+        max={max}
+        className={suffix ? "pr-8" : ""}
+      />
+      {suffix && value && (
+        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground pointer-events-none">{suffix}</span>
+      )}
+    </div>
+  );
+}
+
 export function ContactForm({ type, title, subtitle }: ContactFormProps) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -153,6 +228,19 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
     resolver: zodResolver(schema),
     defaultValues: getDefaults(type),
   });
+
+  const wellnessFeesValue = form.watch("wellnessFees");
+  const propertyStateValue = form.watch("propertyState");
+
+  useEffect(() => {
+    if (type === "hotel" && propertyStateValue) {
+      const currentCity = form.getValues("propertyCity");
+      const availableCities = CITIES_BY_STATE[propertyStateValue] || [];
+      if (currentCity && !availableCities.includes(currentCity)) {
+        form.setValue("propertyCity", "");
+      }
+    }
+  }, [propertyStateValue, type, form]);
 
   const onSubmit = (data: Record<string, unknown>) => {
     setIsSubmitting(true);
@@ -203,6 +291,8 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
     );
   }
 
+  const cityOptions = type === "hotel" && propertyStateValue ? (CITIES_BY_STATE[propertyStateValue] || []) : [];
+
   return (
     <div className="bg-card rounded-2xl p-8 md:p-10 shadow-xl border border-border" id="contact">
       <div className="mb-8">
@@ -222,7 +312,7 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
               name="firstName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>First Name</FormLabel>
+                  <FormLabel>First Name *</FormLabel>
                   <FormControl>
                     <Input placeholder="John" {...field} data-testid="input-firstname" />
                   </FormControl>
@@ -235,7 +325,7 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
               name="lastName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Last Name</FormLabel>
+                  <FormLabel>Last Name *</FormLabel>
                   <FormControl>
                     <Input placeholder="Doe" {...field} data-testid="input-lastname" />
                   </FormControl>
@@ -251,7 +341,7 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Work Email</FormLabel>
+                  <FormLabel>Work Email *</FormLabel>
                   <FormControl>
                     <Input type="email" placeholder="john@company.com" {...field} data-testid="input-email" />
                   </FormControl>
@@ -265,7 +355,7 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone Number</FormLabel>
+                    <FormLabel>Phone Number *</FormLabel>
                     <FormControl>
                       <Input type="tel" placeholder="(555) 000-0000" {...field} data-testid="input-phone" />
                     </FormControl>
@@ -283,10 +373,10 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    {type === "hotel" ? "Hotel/Resort Name" :
-                     type === "fitness" ? "Gym/Club Name" :
-                     type === "residential" ? "Property/Community Name" :
-                     "University/Program Name"}
+                    {type === "hotel" ? "Hotel/Resort Name *" :
+                     type === "fitness" ? "Gym/Club Name *" :
+                     type === "residential" ? "Property/Community Name *" :
+                     "University/Program Name *"}
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -309,18 +399,17 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
               name="role"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Role/Title</FormLabel>
+                  <FormLabel>Role/Title *</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder={
-                        type === "hotel" ? "General Manager" :
-                        type === "fitness" ? "Owner / Director" :
-                        type === "residential" ? "Property Manager" :
-                        "Athletic Director"
-                      }
-                      {...field}
-                      data-testid="input-role"
-                    />
+                    {type === "hotel" ? (
+                      <SelectField value={field.value} onChange={field.onChange} options={["General Manager", "Director of Operations", "VP of Hospitality", "Revenue Manager", "Spa/Wellness Director", "Owner", "Other"]} placeholder="Select role..." />
+                    ) : type === "fitness" ? (
+                      <SelectField value={field.value} onChange={field.onChange} options={["Owner", "General Manager", "Director of Operations", "Fitness Director", "Club Manager", "Other"]} placeholder="Select role..." />
+                    ) : type === "residential" ? (
+                      <SelectField value={field.value} onChange={field.onChange} options={["Property Manager", "HOA Board Member", "Developer", "Building Owner", "Community Director", "Other"]} placeholder="Select role..." />
+                    ) : (
+                      <SelectField value={field.value} onChange={field.onChange} options={["Athletic Director", "Head Coach", "Associate AD", "Sports Medicine Director", "Strength & Conditioning Coach", "Athletic Trainer", "Other"]} placeholder="Select role..." />
+                    )}
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -331,53 +420,74 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
           {type === "hotel" && (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField control={form.control} name="propertyLocation" render={({ field }) => (
+                <FormField control={form.control} name="propertyState" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Property Location</FormLabel>
-                    <FormControl><Input placeholder="Miami, FL" {...field} /></FormControl>
+                    <FormLabel>Property State *</FormLabel>
+                    <FormControl>
+                      <SelectField value={field.value} onChange={field.onChange} options={US_STATES} placeholder="Select state..." />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
+                <FormField control={form.control} name="propertyCity" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Property City *</FormLabel>
+                    <FormControl>
+                      <SelectField
+                        value={field.value}
+                        onChange={field.onChange}
+                        options={cityOptions}
+                        placeholder={propertyStateValue ? "Select city..." : "Select a state first..."}
+                        disabled={!propertyStateValue}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="numberOfRooms" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Number of Rooms</FormLabel>
+                    <FormLabel>Number of Rooms *</FormLabel>
                     <FormControl><Input type="number" placeholder="200" {...field} data-testid="input-units" /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="averageOccupancy" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Average Occupancy Rate</FormLabel>
-                    <FormControl><Input placeholder="70%" {...field} /></FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-                <FormField control={form.control} name="existingSpaGym" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Existing Spa/Gym/Wellness Area?</FormLabel>
-                    <FormControl><Input placeholder="Yes — 2,000 sq ft spa" {...field} /></FormControl>
+                    <FormLabel>Average Occupancy Rate *</FormLabel>
+                    <FormControl>
+                      <NumberInputWithSuffix value={field.value} onChange={field.onChange} placeholder="70" suffix="%" min={0} max={100} />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField control={form.control} name="estimatedPodSpace" render={({ field }) => (
+                <FormField control={form.control} name="existingSpaGym" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Estimated Pod Space (sq ft)</FormLabel>
-                    <FormControl><Input placeholder="500 sq ft" {...field} /></FormControl>
+                    <FormLabel>Existing Spa/Gym/Wellness Area? *</FormLabel>
+                    <FormControl>
+                      <SelectField value={field.value} onChange={field.onChange} options={["Yes", "No", "Planned"]} placeholder="Select..." />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
-                <FormField control={form.control} name="targetTimeline" render={({ field }) => (
+                <FormField control={form.control} name="estimatedPodSpace" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Target Timeline</FormLabel>
-                    <FormControl><Input placeholder="Q2 2026" {...field} /></FormControl>
+                    <FormLabel>Estimated Pod Space (sq ft) *</FormLabel>
+                    <FormControl><Input type="number" placeholder="500" {...field} min={0} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
               </div>
+              <FormField control={form.control} name="targetTimeline" render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Target Timeline *</FormLabel>
+                  <FormControl><Input placeholder="Q2 2026" {...field} /></FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
             </>
           )}
 
@@ -386,14 +496,14 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="numberOfMembers" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Number of Members</FormLabel>
+                    <FormLabel>Number of Members *</FormLabel>
                     <FormControl><Input type="number" placeholder="500" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
                 <FormField control={form.control} name="numberOfLocations" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Number of Locations</FormLabel>
+                    <FormLabel>Number of Locations *</FormLabel>
                     <FormControl><Input type="number" placeholder="1" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
@@ -402,42 +512,46 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="facilityType" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Type of Facility</FormLabel>
-                    <FormControl><Input placeholder="Gym / Padel Club / CrossFit / Boutique" {...field} /></FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-                <FormField control={form.control} name="currentRecoveryAmenities" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Current Recovery Amenities</FormLabel>
-                    <FormControl><Input placeholder="Sauna, cold plunge, etc." {...field} /></FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField control={form.control} name="availableSpace" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Available Space (sq ft)</FormLabel>
-                    <FormControl><Input placeholder="400 sq ft" {...field} /></FormControl>
+                    <FormLabel>Type of Facility *</FormLabel>
+                    <FormControl>
+                      <SelectField value={field.value} onChange={field.onChange} options={["Gym", "Padel Club", "CrossFit", "Boutique Studio", "Multi-Sport Facility", "Martial Arts", "Other"]} placeholder="Select facility type..." />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
                 <FormField control={form.control} name="mainGoal" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Main Goal / Interest</FormLabel>
+                    <FormLabel>Main Goal / Interest *</FormLabel>
                     <FormControl><Input placeholder="Member retention, premium tier, etc." {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
               </div>
-              <FormField control={form.control} name="targetTimeline" render={({ field }) => (
+              <FormField control={form.control} name="currentRecoveryAmenities" render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Target Timeline</FormLabel>
-                  <FormControl><Input placeholder="Q2 2026" {...field} /></FormControl>
+                  <FormLabel>Current Recovery Amenities *</FormLabel>
+                  <FormControl>
+                    <MultiCheckboxField value={field.value} onChange={field.onChange} options={["Sauna", "Cold Plunge", "Steam Room", "Massage", "Compression Boots", "Red Light Therapy", "Cryotherapy", "None"]} />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )} />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="availableSpace" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Available Space (sq ft) *</FormLabel>
+                    <FormControl><Input type="number" placeholder="400" {...field} min={0} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="targetTimeline" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Target Timeline *</FormLabel>
+                    <FormControl><Input placeholder="Q2 2026" {...field} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
             </>
           )}
 
@@ -446,66 +560,85 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="propertyType" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Type of Property</FormLabel>
-                    <FormControl><Input placeholder="Condo / HOA / Mixed-Use" {...field} data-testid="input-property-type" /></FormControl>
+                    <FormLabel>Type of Property *</FormLabel>
+                    <FormControl>
+                      <SelectField value={field.value} onChange={field.onChange} options={["Condo", "HOA", "Mixed-Use", "Co-op", "Luxury Apartment", "Other"]} placeholder="Select property type..." />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
                 <FormField control={form.control} name="numberOfUnits" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Number of Units</FormLabel>
+                    <FormLabel>Number of Units *</FormLabel>
                     <FormControl><Input type="number" placeholder="150" {...field} data-testid="input-units" /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField control={form.control} name="currentAmenities" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Current Amenities</FormLabel>
-                    <FormControl><Input placeholder="Pool, gym, clubhouse, etc." {...field} /></FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-                <FormField control={form.control} name="availableSpace" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Available Space (sq ft)</FormLabel>
-                    <FormControl><Input placeholder="500 sq ft" {...field} /></FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField control={form.control} name="wellnessFees" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Amenity/Wellness Fees Currently?</FormLabel>
-                    <FormControl><Input placeholder="Yes — $50/mo amenity fee" {...field} /></FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-                <FormField control={form.control} name="decisionStage" render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Decision Stage</FormLabel>
-                    <FormControl><Input placeholder="Researching / Comparing / Ready to move" {...field} /></FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )} />
-              </div>
-              <FormField control={form.control} name="timeline" render={({ field }) => (
+              <FormField control={form.control} name="currentAmenities" render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Timeline</FormLabel>
-                  <FormControl><Input placeholder="Q2 2026" {...field} /></FormControl>
+                  <FormLabel>Current Amenities *</FormLabel>
+                  <FormControl>
+                    <MultiCheckboxField value={field.value} onChange={field.onChange} options={["Pool", "Gym", "Clubhouse", "Spa", "Tennis Courts", "Concierge", "Business Center", "None"]} />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )} />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="availableSpace" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Available Space (sq ft) *</FormLabel>
+                    <FormControl><Input type="number" placeholder="500" {...field} min={0} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="wellnessFees" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Amenity/Wellness Fees Currently? *</FormLabel>
+                    <FormControl>
+                      <SelectField value={field.value} onChange={field.onChange} options={["Yes", "No"]} placeholder="Select..." />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+              {wellnessFeesValue === "Yes" && (
+                <FormField control={form.control} name="amenityFeeAmount" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Amenity Fee Amount</FormLabel>
+                    <FormControl><Input placeholder="$50/mo" {...field} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              )}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="decisionStage" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Decision Stage *</FormLabel>
+                    <FormControl>
+                      <SelectField value={field.value} onChange={field.onChange} options={["Just Exploring", "Actively Researching", "Comparing Options", "Ready to Move Forward"]} placeholder="Select stage..." />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="timeline" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Timeline *</FormLabel>
+                    <FormControl><Input placeholder="Q2 2026" {...field} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
             </>
           )}
 
           {(type === "athletics-brief" || type === "athletics-full") && (
             <FormField control={form.control} name="sportDepartment" render={({ field }) => (
               <FormItem>
-                <FormLabel>Sport / Department</FormLabel>
-                <FormControl><Input placeholder="Football, Basketball, All Sports" {...field} /></FormControl>
+                <FormLabel>Sport / Department *</FormLabel>
+                <FormControl>
+                  <SelectField value={field.value} onChange={field.onChange} options={["Football", "Basketball", "All Sports", "Baseball/Softball", "Track & Field", "Soccer", "Swimming", "Volleyball", "Athletic Department", "Other"]} placeholder="Select sport..." />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )} />
@@ -516,14 +649,14 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="numberOfAthletes" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Number of Athletes</FormLabel>
+                    <FormLabel>Number of Athletes *</FormLabel>
                     <FormControl><Input type="number" placeholder="500" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
                 <FormField control={form.control} name="currentRecoverySetup" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Current Recovery Setup</FormLabel>
+                    <FormLabel>Current Recovery Setup *</FormLabel>
                     <FormControl><Input placeholder="Ice baths, training room, etc." {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
@@ -532,14 +665,14 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="annualRecoverySpend" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Current Annual Recovery Spend</FormLabel>
+                    <FormLabel>Current Annual Recovery Spend *</FormLabel>
                     <FormControl><Input placeholder="$50,000" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
                 <FormField control={form.control} name="facilitySpace" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Facility Space Available (sq ft)</FormLabel>
+                    <FormLabel>Facility Space Available (sq ft) *</FormLabel>
                     <FormControl><Input placeholder="600 sq ft" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
@@ -548,14 +681,14 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="budgetCycle" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Budget Cycle / Purchase Window</FormLabel>
+                    <FormLabel>Budget Cycle / Purchase Window *</FormLabel>
                     <FormControl><Input placeholder="Fiscal year starts July" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
                 <FormField control={form.control} name="timeline" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Timeline</FormLabel>
+                    <FormLabel>Timeline *</FormLabel>
                     <FormControl><Input placeholder="Q3 2026" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
@@ -570,7 +703,7 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
             disabled={isSubmitting}
             data-testid="button-submit-form"
           >
-            {isSubmitting ? "Submitting..." : getSubmitLabel(type)}
+            {isSubmitting ? "Submitting..." : "Request a Meeting"}
           </Button>
         </form>
       </Form>

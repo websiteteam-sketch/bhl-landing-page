@@ -65,7 +65,7 @@ export default function Fitness() {
               </motion.div>
               <motion.div variants={FADE_UP} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 text-secondary-foreground text-sm font-medium mb-6">
                 <Dumbbell className="w-4 h-4" />
-                <span>For Fitness & Padel Clubs</span>
+                <span>For Fitness and Sports Club</span>
               </motion.div>
 
               <motion.h1 variants={FADE_UP} className="text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight text-foreground mb-6 leading-[1.1]">
@@ -79,7 +79,7 @@ export default function Fitness() {
               <motion.div variants={FADE_UP} className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="h-14 px-8 text-base" asChild data-testid="btn-hero-cta">
                   <a href="#contact">
-                    Get Your Custom Recovery Pod
+                    Request a Meeting
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </a>
                 </Button>
@@ -417,7 +417,7 @@ export default function Fitness() {
         </section>
       </main>
 
-      <Footer />
+      <Footer page="fitness" />
     </div>
   );
 }

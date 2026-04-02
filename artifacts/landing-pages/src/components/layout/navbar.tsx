@@ -10,7 +10,7 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Hotels & Resorts", testId: "link-nav-hotels" },
-    { href: "/fitness", label: "Fitness & Padel", testId: "link-nav-fitness" },
+    { href: "/fitness", label: "Fitness and Sports Club", testId: "link-nav-fitness" },
     { href: "/residential", label: "Luxury Residential", testId: "link-nav-residential" },
     { href: "/athletics", label: "University Athletics", testId: "link-nav-athletics" },
   ];

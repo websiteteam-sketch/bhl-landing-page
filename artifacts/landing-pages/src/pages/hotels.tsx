@@ -82,7 +82,7 @@ export default function Hotels() {
               <motion.div variants={FADE_UP}>
                 <Button size="lg" className="h-14 px-8 text-base" asChild data-testid="btn-hero-cta">
                   <a href="#contact">
-                    Request a Revenue Projection
+                    Request a Meeting
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </a>
                 </Button>
@@ -425,7 +425,7 @@ export default function Hotels() {
         </section>
       </main>
 
-      <Footer />
+      <Footer page="hotels" />
     </div>
   );
 }

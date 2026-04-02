@@ -48,7 +48,7 @@ export function SchemaMarkup({ page }: SchemaMarkupProps) {
     const productDescriptions: Record<string, string> = {
       hotels: "Turnkey wellness pod for hotels featuring HBOT, red light therapy, infrared sauna, lymphatic drainage suits, and PEMF devices. Generates $27K+/month in new revenue with zero additional staff.",
       residential: "Turnkey wellness pod for luxury residential properties featuring HBOT, red light therapy, infrared sauna, lymphatic drainage suits, and PEMF devices. 10-25% property value increase.",
-      fitness: "Turnkey recovery pod for fitness clubs and padel facilities featuring HBOT, red light therapy, infrared sauna, compression therapy, and PEMF devices. Drives member retention and premium membership revenue.",
+      fitness: "Turnkey recovery pod for fitness and sports clubs featuring HBOT, red light therapy, infrared sauna, compression therapy, and PEMF devices. Drives member retention and premium membership revenue.",
       athletics: "Turnkey recovery pod for university athletics programs featuring HBOT, red light therapy, infrared sauna, compression therapy, and PEMF devices. Pro-level recovery for every athlete at a fraction of outsourced costs."
     };
 
@@ -125,7 +125,7 @@ export function SchemaMarkup({ page }: SchemaMarkupProps) {
     const pageNames: Record<string, string> = {
       hotels: "Hotels & Resorts",
       residential: "Luxury Residential",
-      fitness: "Fitness & Padel Clubs",
+      fitness: "Fitness and Sports Club",
       athletics: "University Athletics"
     };
 
@@ -178,28 +178,28 @@ export function SchemaMarkup({ page }: SchemaMarkupProps) {
     const titleMap: Record<string, string> = {
       hotels: "Recovery Pods for Hotels | BH Labs — $324K Annual Revenue",
       residential: "Recovery Pods for Luxury Residential | BH Labs — 10-25% Property Value Increase",
-      fitness: "Recovery Pods for Fitness & Padel Clubs | BH Labs — Boost Member Retention",
+      fitness: "Recovery Pods for Fitness and Sports Club | BH Labs — Boost Member Retention",
       athletics: "Recovery Pods for University Athletics | BH Labs — Pro-Level Recovery"
     };
 
     const descriptionMap: Record<string, string> = {
       hotels: "Install a turnkey BH Labs Recovery Pod in your hotel. Generate $27K+/month in wellness revenue with zero additional staff. HBOT, red light therapy, infrared sauna, PEMF. Under 2 month payback.",
       residential: "Elevate your property with a BH Labs Recovery Pod. $4,500/mo new HOA revenue, 10-month payback, 10-25% property value increase. HBOT, red light therapy, infrared sauna, PEMF.",
-      fitness: "Add a turnkey BH Labs Recovery Pod to your gym or padel club. Drive member retention, launch premium tiers, and differentiate with 7 clinical-grade recovery modalities.",
+      fitness: "Add a turnkey BH Labs Recovery Pod to your fitness or sports club. Drive member retention, launch premium tiers, and differentiate with 7 clinical-grade recovery modalities.",
       athletics: "Install a BH Labs Recovery Pod in your athletic facility. 7 clinical-grade modalities for every sport. Pro-level recovery at a fraction of outsourced costs."
     };
 
     const ogTitleMap: Record<string, string> = {
       hotels: "Recovery Pods for Hotels | BH Labs",
       residential: "Recovery Pods for Luxury Residential | BH Labs",
-      fitness: "Recovery Pods for Fitness & Padel Clubs | BH Labs",
+      fitness: "Recovery Pods for Fitness and Sports Club | BH Labs",
       athletics: "Recovery Pods for University Athletics | BH Labs"
     };
 
     const ogDescriptionMap: Record<string, string> = {
       hotels: "Install a turnkey BH Labs Recovery Pod. Generate $27K+/month in new wellness revenue with zero additional staff.",
       residential: "Elevate your property with a BH Labs Recovery Pod. $4,500/mo new HOA revenue, 10-25% property value increase.",
-      fitness: "Add a BH Labs Recovery Pod to your facility. Boost member retention and launch premium recovery memberships.",
+      fitness: "Add a BH Labs Recovery Pod to your sports club. Boost member retention and launch premium recovery memberships.",
       athletics: "Give every athlete pro-level recovery. 7 clinical-grade modalities, one turnkey installation."
     };
 

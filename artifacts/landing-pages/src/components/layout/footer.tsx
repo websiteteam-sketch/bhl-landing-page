@@ -2,7 +2,28 @@ import { Link } from "wouter";
 import { Mail, Phone, Globe } from "lucide-react";
 import logoLight from "@/assets/images/logo-light.png";
 
-export function Footer() {
+type PageType = "hotels" | "fitness" | "residential" | "athletics";
+
+interface FooterProps {
+  page?: PageType;
+}
+
+function getDescription(page?: PageType): string {
+  switch (page) {
+    case "hotels":
+      return "Miami's premier biohacking and wellness integration company. Turnkey Recovery Pods for hotels and resorts — generate new wellness revenue with zero additional staff.";
+    case "fitness":
+      return "Miami's premier biohacking and wellness integration company. Turnkey Recovery Pods for fitness and sports clubs — boost member retention and launch premium recovery tiers.";
+    case "residential":
+      return "Miami's premier biohacking and wellness integration company. Turnkey Recovery Pods for luxury residential properties — increase property value and generate HOA revenue.";
+    case "athletics":
+      return "Miami's premier biohacking and wellness integration company. Turnkey Recovery Pods for university athletics programs — pro-level recovery for every athlete at a fraction of outsourced costs.";
+    default:
+      return "Miami's premier biohacking and wellness integration company. Turnkey Recovery Pods for high-end commercial and residential spaces.";
+  }
+}
+
+export function Footer({ page }: FooterProps) {
   return (
     <footer className="bg-primary text-primary-foreground py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,7 +35,7 @@ export function Footer() {
               <span className="font-sans font-semibold text-lg tracking-tight uppercase">BH Labs</span>
             </div>
             <p className="text-primary-foreground/70 text-sm max-w-xs">
-              Miami's premier biohacking and wellness integration company. Turnkey Recovery Pods for high-end commercial and residential spaces.
+              {getDescription(page)}
             </p>
           </div>
 
@@ -28,7 +49,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/fitness" className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors" data-testid="link-footer-fitness">
-                  Fitness & Padel Clubs
+                  Fitness and Sports Club
                 </Link>
               </li>
               <li>

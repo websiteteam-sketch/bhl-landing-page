@@ -47,10 +47,10 @@ export default function Residential() {
               width={1920}
               height={1080}
             />
-            <div className="absolute inset-0 bg-gradient-to-l from-background/95 via-background/80 to-background/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 flex justify-end">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
             <motion.div 
               initial="hidden"
               animate="visible"
@@ -76,7 +76,7 @@ export default function Residential() {
               <motion.div variants={FADE_UP}>
                 <Button size="lg" className="h-14 px-8 text-base" asChild data-testid="btn-hero-cta">
                   <a href="#contact">
-                    Request a Property Assessment
+                    Request a Meeting
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </a>
                 </Button>
@@ -318,7 +318,7 @@ export default function Residential() {
         </section>
       </main>
 
-      <Footer />
+      <Footer page="residential" />
     </div>
   );
 }

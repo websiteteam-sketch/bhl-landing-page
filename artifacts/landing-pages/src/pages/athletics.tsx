@@ -82,7 +82,7 @@ export default function Athletics() {
               <motion.div variants={FADE_UP} className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="h-14 px-8 text-base" asChild data-testid="btn-hero-cta">
                   <a href="#contact">
-                    Download the Athletics Recovery Brief
+                    Request a Meeting
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </a>
                 </Button>
@@ -452,7 +452,7 @@ export default function Athletics() {
         </section>
       </main>
 
-      <Footer />
+      <Footer page="athletics" />
     </div>
   );
 }
