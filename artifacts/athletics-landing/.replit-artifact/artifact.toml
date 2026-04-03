@@ -1,6 +1,6 @@
 kind = "web"
 previewPath = "/athletics-landing/"
-title = "BH Labs University Athletics Landing Page"
+title = "University Athletics Landing Page"
 version = "1.0.0"
 id = "artifacts/athletics-landing"
 router = "path"

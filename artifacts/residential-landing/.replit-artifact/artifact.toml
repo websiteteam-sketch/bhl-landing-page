@@ -1,6 +1,6 @@
 kind = "web"
 previewPath = "/residential-landing/"
-title = "BH Labs Luxury Residential Landing Page"
+title = "Luxury Residential / HOA Landing Page"
 version = "1.0.0"
 id = "artifacts/residential-landing"
 router = "path"

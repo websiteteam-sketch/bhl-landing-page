@@ -1,6 +1,6 @@
 kind = "web"
 previewPath = "/hotel-landing/"
-title = "BH Labs Hotels & Resorts Landing Page"
+title = "Hotel & Resort Landing Page"
 version = "1.0.0"
 id = "artifacts/hotel-landing"
 router = "path"
