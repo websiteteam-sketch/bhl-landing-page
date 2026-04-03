@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
 
 const req = (msg: string) => z.string().min(1, msg);
 
@@ -17,13 +17,17 @@ const athleticsSchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Phone number is required"),
   university: req("University name is required"),
-  role: req("Role/Title is required"),
-  numberOfSports: req("Number of sports programs is required"),
+  role: req("Role is required"),
   numberOfAthletes: req("Number of athletes is required"),
-  currentRecoveryMethods: req("Please select at least one option"),
-  availableSpace: req("Available space is required"),
-  primaryGoal: req("Primary goal is required"),
-  targetTimeline: req("Timeline is required"),
+  isDecisionMaker: z.string().optional(),
+  numberOfSports: z.string().optional(),
+  divisionLevel: z.string().optional(),
+  currentRecoveryMethods: z.string().optional(),
+  availableSpace: z.string().optional(),
+  primaryGoal: z.string().optional(),
+  budgetStatus: z.string().optional(),
+  targetTimeline: z.string().optional(),
+  customSavingsAnalysis: z.string().optional(),
 });
 
 function getUTMParams(): Record<string, string> {
@@ -36,11 +40,12 @@ function getUTMParams(): Record<string, string> {
   return params;
 }
 
-function SelectField({ value, onChange, options, placeholder }: { value: string; onChange: (v: string) => void; options: string[]; placeholder?: string }) {
+function SelectField({ value, onChange, options, placeholder, disabled }: { value: string; onChange: (v: string) => void; options: string[]; placeholder?: string; disabled?: boolean }) {
   return (
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
+      disabled={disabled}
       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none"
       style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em', paddingRight: '2.5rem' }}
     >
@@ -52,9 +57,8 @@ function SelectField({ value, onChange, options, placeholder }: { value: string;
   );
 }
 
-function MultiCheckboxField({ value, onChange, options }: { value: string; onChange: (v: string) => void; options: string[] }) {
+function PillSelectField({ value, onChange, options }: { value: string; onChange: (v: string) => void; options: string[] }) {
   const selected = value ? value.split(", ").filter(Boolean) : [];
-
   const toggle = (opt: string) => {
     let next: string[];
     if (opt === "None") {
@@ -65,19 +69,21 @@ function MultiCheckboxField({ value, onChange, options }: { value: string; onCha
     }
     onChange(next.join(", "));
   };
-
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className="flex flex-wrap gap-2">
       {options.map((opt) => (
-        <label key={opt} className="flex items-center gap-2 text-sm cursor-pointer py-1">
-          <input
-            type="checkbox"
-            checked={selected.includes(opt)}
-            onChange={() => toggle(opt)}
-            className="rounded border-input h-4 w-4 text-primary focus:ring-primary"
-          />
-          <span className="text-foreground">{opt}</span>
-        </label>
+        <button
+          key={opt}
+          type="button"
+          onClick={() => toggle(opt)}
+          className={`px-3 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+            selected.includes(opt)
+              ? "bg-primary text-primary-foreground border-primary"
+              : "bg-background text-muted-foreground border-border hover:border-primary/50"
+          }`}
+        >
+          {opt}
+        </button>
       ))}
     </div>
   );
@@ -92,6 +98,7 @@ export function ContactForm({ title, subtitle }: ContactFormProps) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [step, setStep] = useState(1);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -106,10 +113,16 @@ export function ContactForm({ title, subtitle }: ContactFormProps) {
     resolver: zodResolver(athleticsSchema),
     defaultValues: {
       firstName: "", lastName: "", email: "", phone: "", university: "", role: "",
-      numberOfSports: "", numberOfAthletes: "", currentRecoveryMethods: "",
-      availableSpace: "", primaryGoal: "", targetTimeline: ""
+      numberOfAthletes: "", isDecisionMaker: "",
+      numberOfSports: "", divisionLevel: "", currentRecoveryMethods: "", availableSpace: "",
+      primaryGoal: "", budgetStatus: "", targetTimeline: "", customSavingsAnalysis: ""
     },
   });
+
+  const validateStep1 = async () => {
+    const result = await form.trigger(["firstName", "lastName", "email", "phone", "university", "role", "numberOfAthletes"]);
+    if (result) setStep(2);
+  };
 
   const onSubmit = (data: Record<string, unknown>) => {
     setIsSubmitting(true);
@@ -137,15 +150,19 @@ export function ContactForm({ title, subtitle }: ContactFormProps) {
         <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
           <CheckCircle2 className="w-10 h-10 text-emerald-600" />
         </div>
-        <h3 className="text-2xl md:text-3xl font-serif font-medium mb-3 text-foreground">
-          Thank You!
-        </h3>
+        <h3 className="text-2xl md:text-3xl font-serif font-medium mb-3 text-foreground">Thank You!</h3>
         <p className="text-muted-foreground text-lg mb-6 max-w-md mx-auto">
-          Your request has been received. A BH Labs representative will contact you within 24 hours with your custom recovery pod proposal.
+          Your request has been received. A BH Labs representative will contact you within 24 hours with your custom recovery proposal.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button variant="outline" onClick={() => { setIsSubmitted(false); form.reset(); }}>
+          <Button variant="outline" onClick={() => { setIsSubmitted(false); setStep(1); form.reset(); }}>
             Submit Another Request
+          </Button>
+          <Button asChild>
+            <a href="#roi">
+              Recalculate Savings
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </a>
           </Button>
         </div>
       </motion.div>
@@ -154,133 +171,203 @@ export function ContactForm({ title, subtitle }: ContactFormProps) {
 
   return (
     <div className="bg-card rounded-2xl p-5 md:p-8 lg:p-10 shadow-xl border border-border" id="contact">
-      <div className="mb-8">
+      <div className="mb-6">
         <h3 className="text-2xl md:text-3xl font-serif font-medium mb-2 text-foreground">
-          {title || "Get Your Custom Recovery Pod Proposal"}
+          {title || "Request a Custom Proposal"}
         </h3>
         <p className="text-muted-foreground">
-          {subtitle || "Tell us about your athletics program and we'll design a recovery solution tailored to your needs."}
+          {subtitle || "Tell us about your athletics program and we'll prepare a tailored recovery solution and savings analysis."}
         </p>
+      </div>
+
+      <div className="flex items-center gap-3 mb-8">
+        <div className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${step >= 1 ? "bg-emerald-600 text-white" : "bg-muted text-muted-foreground"}`}>1</div>
+        <div className={`flex-1 h-1 rounded-full ${step >= 2 ? "bg-emerald-600" : "bg-muted"}`} />
+        <div className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${step >= 2 ? "bg-emerald-600 text-white" : "bg-muted text-muted-foreground"}`}>2</div>
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField control={form.control} name="firstName" render={({ field }) => (
-              <FormItem>
-                <FormLabel>First Name *</FormLabel>
-                <FormControl><Input placeholder="John" {...field} /></FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-            <FormField control={form.control} name="lastName" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Last Name *</FormLabel>
-                <FormControl><Input placeholder="Doe" {...field} /></FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
+          {step === 1 && (
+            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
+              <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Contact Info & Institution</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField control={form.control} name="email" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Work Email *</FormLabel>
-                <FormControl><Input type="email" placeholder="john@university.edu" {...field} /></FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-            <FormField control={form.control} name="phone" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone Number *</FormLabel>
-                <FormControl><Input type="tel" placeholder="(555) 000-0000" {...field} /></FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="firstName" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>First Name *</FormLabel>
+                    <FormControl><Input placeholder="John" {...field} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="lastName" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Last Name *</FormLabel>
+                    <FormControl><Input placeholder="Doe" {...field} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField control={form.control} name="university" render={({ field }) => (
-              <FormItem>
-                <FormLabel>University Name *</FormLabel>
-                <FormControl><Input placeholder="State University" {...field} /></FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-            <FormField control={form.control} name="role" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Role/Title *</FormLabel>
-                <FormControl>
-                  <SelectField value={field.value} onChange={field.onChange} options={["Athletic Director", "Associate AD", "Head Athletic Trainer", "Director of Sports Medicine", "Head Coach", "Director of Performance", "Facilities Director", "Other"]} placeholder="Select role..." />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="email" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Work Email *</FormLabel>
+                    <FormControl><Input type="email" placeholder="john@university.edu" {...field} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="phone" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone Number *</FormLabel>
+                    <FormControl><Input type="tel" placeholder="(555) 000-0000" {...field} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField control={form.control} name="numberOfSports" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Number of Sports Programs *</FormLabel>
-                <FormControl><Input type="number" placeholder="20" {...field} /></FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-            <FormField control={form.control} name="numberOfAthletes" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Total Number of Athletes *</FormLabel>
-                <FormControl><Input type="number" placeholder="400" {...field} /></FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="university" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>University / Organization *</FormLabel>
+                    <FormControl><Input placeholder="State University" {...field} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="role" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Your Role *</FormLabel>
+                    <FormControl>
+                      <SelectField value={field.value} onChange={field.onChange} options={["Athletic Director", "Associate AD", "Head Athletic Trainer", "Director of Sports Medicine", "Director of Performance", "Head Coach", "Strength & Conditioning", "Facilities Director", "Other"]} placeholder="Select role..." />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
 
-          <FormField control={form.control} name="currentRecoveryMethods" render={({ field }) => (
-            <FormItem>
-              <FormLabel>Current Recovery Methods *</FormLabel>
-              <FormControl>
-                <MultiCheckboxField value={field.value} onChange={field.onChange} options={["Cold Plunge / Ice Baths", "Outsourced Cryo", "Compression Boots", "Athletic Training Room Only", "Off-Campus Recovery Center", "Massage / Manual Therapy", "None"]} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )} />
+              <FormField control={form.control} name="numberOfAthletes" render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Total Number of Athletes *</FormLabel>
+                  <FormControl><Input type="number" placeholder="400" {...field} /></FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField control={form.control} name="availableSpace" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Available Space (sq ft) *</FormLabel>
-                <FormControl><Input type="number" placeholder="400" {...field} min={0} /></FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-            <FormField control={form.control} name="primaryGoal" render={({ field }) => (
-              <FormItem>
-                <FormLabel>Primary Goal *</FormLabel>
-                <FormControl>
-                  <SelectField value={field.value} onChange={field.onChange} options={["Reduce Injury Downtime", "Accelerate Return-to-Play", "Replace Outsourced Recovery", "Recruiting Advantage", "Comprehensive Athlete Wellness", "Cost Savings", "Other"]} placeholder="Select primary goal..." />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-          </div>
+              <Button type="button" onClick={validateStep1} className="w-full h-12 text-base font-medium">
+                Continue
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </motion.div>
+          )}
 
-          <FormField control={form.control} name="targetTimeline" render={({ field }) => (
-            <FormItem>
-              <FormLabel>Target Timeline *</FormLabel>
-              <FormControl>
-                <SelectField value={field.value} onChange={field.onChange} options={["Before Next Season", "Within 3 Months", "Within 6 Months", "Next Academic Year", "Exploring Options"]} placeholder="Select timeline..." />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )} />
+          {step === 2 && (
+            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
+              <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Program Details & Goals</p>
 
-          <Button
-            type="submit"
-            className="w-full h-12 text-base font-medium"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "Submitting..." : "Request a Meeting"}
-          </Button>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="numberOfSports" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Number of Sports Programs</FormLabel>
+                    <FormControl><Input type="number" placeholder="20" {...field} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="divisionLevel" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Division / Conference Level</FormLabel>
+                    <FormControl>
+                      <SelectField value={field.value || ""} onChange={field.onChange} options={["NCAA Division I", "NCAA Division II", "NCAA Division III", "NAIA", "NJCAA", "Club / Academy", "Other"]} placeholder="Select..." />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+
+              <FormField control={form.control} name="isDecisionMaker" render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Your role in this decision</FormLabel>
+                  <FormControl>
+                    <SelectField value={field.value || ""} onChange={field.onChange} options={["Decision-maker — I can approve this", "Evaluator — I assess and recommend", "Recommender — I influence the process", "Researching for someone else"]} placeholder="Select..." />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
+
+              <FormField control={form.control} name="currentRecoveryMethods" render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Current Recovery Methods</FormLabel>
+                  <FormControl>
+                    <PillSelectField value={field.value || ""} onChange={field.onChange} options={["Cold Plunge / Ice Baths", "Outsourced Cryo", "Compression Boots", "Athletic Training Room Only", "Off-Campus Recovery Center", "Massage / Manual Therapy", "None"]} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="availableSpace" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Available Space (sq ft)</FormLabel>
+                    <FormControl><Input type="number" placeholder="400" {...field} min={0} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="primaryGoal" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Primary Goal</FormLabel>
+                    <FormControl>
+                      <SelectField value={field.value || ""} onChange={field.onChange} options={["Reduce outsourced recovery spend", "Improve athlete recovery access", "Support recruiting", "Expand training room capabilities", "Centralize recovery for all sports", "Other"]} placeholder="Select goal..." />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField control={form.control} name="budgetStatus" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Budget / Funding Status</FormLabel>
+                    <FormControl>
+                      <SelectField value={field.value || ""} onChange={field.onChange} options={["Budget approved", "Funding source identified", "Exploring budget options", "No budget yet"]} placeholder="Select..." />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="targetTimeline" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Target Timeline</FormLabel>
+                    <FormControl>
+                      <SelectField value={field.value || ""} onChange={field.onChange} options={["Before next season", "0-3 months", "3-6 months", "Next academic year", "Planning stage"]} placeholder="Select timeline..." />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
+
+              <FormField control={form.control} name="customSavingsAnalysis" render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Would you like a custom savings analysis?</FormLabel>
+                  <FormControl>
+                    <SelectField value={field.value || ""} onChange={field.onChange} options={["Yes — send me a custom analysis", "No — just a proposal"]} placeholder="Select..." />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
+
+              <div className="flex gap-3">
+                <Button type="button" variant="outline" onClick={() => setStep(1)} className="h-12 px-6">
+                  <ArrowLeft className="mr-2 w-4 h-4" />
+                  Back
+                </Button>
+                <Button
+                  type="submit"
+                  className="flex-1 h-12 text-base font-medium"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Request a Custom Proposal"}
+                </Button>
+              </div>
+            </motion.div>
+          )}
         </form>
       </Form>
     </div>

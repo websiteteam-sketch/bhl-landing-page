@@ -9,7 +9,7 @@ export function SchemaMarkup() {
     const existingCanonical = document.querySelector('link[data-dynamic]');
     existingCanonical?.remove();
 
-    const dateModified = "2026-04-02";
+    const dateModified = "2026-04-03";
 
     const organization = {
       "@context": "https://schema.org",
@@ -36,16 +36,14 @@ export function SchemaMarkup() {
         "contactType": "sales",
         "email": "info@thebiohacklab.com"
       },
-      "sameAs": [
-        "https://www.bh-labs.com"
-      ]
+      "sameAs": ["https://www.bh-labs.com"]
     };
 
     const product = {
       "@context": "https://schema.org",
       "@type": "Product",
       "name": "BH Labs Recovery Pod for University Athletics",
-      "description": "Turnkey wellness pod for university athletic facilities featuring HBOT, red light therapy, infrared sauna, compression therapy, lymphatic drainage, and PEMF devices. Reduces injury downtime and accelerates return-to-play with zero additional staff.",
+      "description": "Turnkey recovery infrastructure for university athletic facilities. Replaces outsourced recovery with 7 clinical-grade modalities serving all sports — HBOT, red light therapy, infrared sauna, compression therapy, lymphatic drainage, and PEMF devices. No additional staff required.",
       "brand": { "@type": "Brand", "name": "BH Labs" },
       "offers": {
         "@type": "Offer",
@@ -53,7 +51,7 @@ export function SchemaMarkup() {
         "price": "45000",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
-        "description": "Complete turnkey Recovery Pod installation with 1-year warranty"
+        "description": "Complete turnkey Recovery Pod installation with 1-year warranty and athletic training staff onboarding"
       },
       "dateModified": dateModified
     };
@@ -63,12 +61,13 @@ export function SchemaMarkup() {
       "@type": "FAQPage",
       "dateModified": dateModified,
       "mainEntity": [
-        { q: "How does a Recovery Pod benefit a university athletics program?", a: "A Recovery Pod provides 7 clinical-grade modalities (HBOT, red light, infrared sauna, compression, PEMF, lymphatic drainage) that accelerate return-to-play, reduce injury downtime, and serve every sport — all in one on-site installation." },
-        { q: "How does the cost compare to outsourcing recovery?", a: "A complete Recovery Pod costs approximately $45,000 — a one-time investment that replaces $100K+/year in outsourced cryo sessions, off-campus recovery centers, and fragmented treatment services." },
-        { q: "Can one pod serve all sports programs?", a: "Yes. The Recovery Pod is designed to serve athletes across every sport — football, basketball, soccer, track, swimming, and more. 30+ protocols cover sport-specific recovery needs." },
-        { q: "Does our athletic training staff need certification?", a: "BH Labs provides comprehensive training and certification for your athletic trainers. No additional hires required — your existing staff will be fully equipped to run every protocol." },
-        { q: "How does recovery technology help with recruiting?", a: "Top recruits compare facilities. A Recovery Pod signals that your program invests in athlete health and performance, giving you a tangible recruiting advantage over programs without dedicated recovery." },
-        { q: "What's the installation timeline?", a: "From initial consultation to a fully operational pod typically takes 4-6 weeks. Our team handles custom design, installation, and staff training — all turnkey." }
+        { q: "How does the cost compare to outsourcing recovery?", a: "A complete Recovery Pod costs approximately $45,000 — a one-time investment that replaces ongoing outsourced recovery contracts." },
+        { q: "Can one pod serve all sports programs?", a: "Yes. The pod serves athletes across every sport with 30+ sport-specific protocols." },
+        { q: "How many athletes can use the pod per day?", a: "Usage depends on scheduling and protocol selection. Most modalities support multiple athletes per day." },
+        { q: "Can this fit in an existing training room?", a: "Most installations require 400-800 sq ft. Custom layout designed for your existing training room or performance facility." },
+        { q: "How much oversight does athletic training staff need to provide?", a: "Minimal. BH Labs trains your ATCs on all equipment and 30+ recovery protocols." },
+        { q: "What's the installation timeline?", a: "4-6 weeks from consultation to fully operational pod — all turnkey." },
+        { q: "What happens after installation?", a: "1-year warranty, ongoing technical support, and same-day service availability." }
       ].map(f => ({
         "@type": "Question",
         "name": f.q,
@@ -81,7 +80,7 @@ export function SchemaMarkup() {
     const webPage = {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "BH Labs Recovery Pods for University Athletics",
+      "name": "University Athletics Recovery Infrastructure | BH Labs Recovery Pods",
       "url": pageUrl,
       "dateModified": dateModified,
       "publisher": {
@@ -112,10 +111,10 @@ export function SchemaMarkup() {
       document.head.appendChild(meta);
     };
 
-    document.title = "Recovery Pods for University Athletics | BH Labs — Pro-Level Recovery for Every Athlete";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Install a turnkey BH Labs Recovery Pod in your athletic facility. 7 clinical-grade modalities that reduce injury downtime, accelerate return-to-play, and cost less than outsourcing recovery. No additional staff required.");
-    setMeta("property", "og:title", "Recovery Pods for University Athletics | BH Labs");
-    setMeta("property", "og:description", "Give every athlete pro-level recovery. One turnkey pod replaces $100K+/year in outsourced services. 7 clinical-grade modalities. No additional staff.");
+    document.title = "University Athletics Recovery Infrastructure | BH Labs — Cut Recovery Costs, Improve Availability";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Replace outsourced recovery with a turnkey BH Labs Recovery Pod. 7 clinical-grade modalities serving all sports. Reduce costs, improve athlete availability, and centralize recovery — no additional staff required.");
+    setMeta("property", "og:title", "University Athletics Recovery Infrastructure | BH Labs");
+    setMeta("property", "og:description", "Cut recovery costs. Improve athlete availability. One turnkey Recovery Pod replaces outsourced services for every sport. No additional staff required.");
     setMeta("property", "og:url", pageUrl);
     setMeta("property", "og:image", "https://www.bh-labs.com/opengraph.jpg");
     setMeta("property", "og:image:width", "1200");

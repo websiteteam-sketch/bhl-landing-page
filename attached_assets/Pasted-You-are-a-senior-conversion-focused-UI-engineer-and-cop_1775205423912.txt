@@ -1,0 +1,353 @@
+You are a senior conversion-focused UI engineer and copy strategist.
+
+I need you to revise this into a higher-converting B2B page for:
+- university athletic departments
+- athletic directors
+- performance directors
+- athletic trainers
+- sports medicine staff
+- strength and conditioning leadership
+
+Goal:
+Turn this page from a general recovery equipment pitch into a premium athletics operations and cost-efficiency page focused on:
+- reducing outsourced recovery spend
+- improving athlete access to recovery
+- supporting return-to-play workflows
+- serving multiple sports through one centralized system
+- minimizing staffing complexity
+- building stronger athletics-specific credibility
+
+Important:
+- Keep the current premium collegiate/performance visual style
+- Do not rebuild from scratch unless necessary
+- Improve copy, section hierarchy, CTA strategy, proof depth, calculator transparency, and form qualification
+- Preserve responsiveness and performance
+- Keep code clean and production-ready
+- Do not add fake testimonials, fake logos, fake stats, or fake case studies
+- If proof assets are unavailable, create polished placeholder components clearly labeled for future replacement
+- Keep the tone sophisticated, performance-driven, operationally credible, and athletic-department aware
+- Position BH Labs as a recovery infrastructure partner, not just an equipment supplier
+
+Primary conversion objective:
+- Generate qualified athletics planning / proposal calls
+Secondary conversion objective:
+- Drive engagement with the cost-savings calculator and estimate submissions
+
+Core positioning shift:
+This page should lead with:
+- cost savings vs outsourced recovery
+- centralized recovery for all sports
+- better athlete access
+- reduced operational fragmentation
+- turnkey implementation
+- minimal added staffing burden
+
+The equipment should support that story, not lead it.
+
+Make these changes:
+
+1) HERO SECTION
+The hero is directionally strong, but the headline should be sharper and more outcome-focused for athletic department buyers.
+
+Use a headline direction such as:
+- “Bring Pro-Level Recovery In-House”
+or
+- “Cut Recovery Costs. Improve Athlete Availability.”
+or
+- “One Recovery Pod for Every Sport in Your Program”
+
+Choose the version that best matches the existing page tone.
+
+Keep or refine the subheadline so it clearly communicates:
+- in-house recovery
+- lower reliance on outsourced vendors
+- support for all sports
+- no dedicated new staff required
+
+CTA structure:
+- Primary CTA: “Calculate Recovery Savings”
+- Secondary CTA: “Request a Custom Proposal”
+
+If needed, replace generic CTA language like “Request a Meeting” with something more athletics-specific.
+
+Under the hero, convert any dense proof paragraph into 3 clean scan-friendly proof stats such as:
+- Approx. pod investment: $45,000
+- Replaces fragmented outsourced recovery spend
+- Serves all sports with 30+ protocols
+
+2) STANDARDIZE CTA HIERARCHY
+Across the page, use only:
+- Primary CTA: “Calculate Recovery Savings”
+- Secondary CTA: “Request a Custom Proposal”
+
+Apply this consistently in hero, calculator, proof sections, and final CTA/form transitions.
+
+After the calculator/results area, add a transition CTA block:
+“Want to see how this could fit your training room and budget?”
+“Request a custom proposal to review facility fit, sports coverage, and projected savings.”
+
+3) REFRAME THE PAGE FOR ATHLETICS OPERATORS
+Make the page consistently answer:
+- How does this reduce outsourced recovery costs?
+- How does this support athletic training and sports medicine operations?
+- How many teams and athletes can this support?
+- How difficult is it to run?
+- Why should an athletic department trust BH Labs?
+
+The page should feel like an athletics infrastructure decision, not just a wellness purchase.
+
+4) IMPROVE PAGE FLOW
+Reorder sections into this conversion sequence:
+
+1. Hero
+2. Why athletic departments are investing in on-site recovery
+3. Savings / ROI calculator
+4. “How savings are calculated” note
+5. Proof / athletics credibility / case study
+6. Recovery system / what athletes get
+7. What is included
+8. Installation / training room integration
+9. FAQ
+10. Lead form
+
+Move proof earlier than deep equipment detail.
+
+5) CALCULATOR: KEEP THE SAVINGS ANGLE, BUT ADD TRANSPARENCY
+This calculator concept is strong because it focuses on savings rather than speculative upside. Keep that positioning.
+
+Add a “How savings are calculated” note directly below the calculator, in this direction:
+“Estimate based on your current annual recovery spend, athlete count, and a one-time pod investment of approximately $45,000. Final savings depend on current vendor usage, program size, and recovery workflow.”
+
+Also add:
+- helper text for annual outsourced recovery spend
+- helper text for athlete count or sports served
+- clear note if the pod investment is assumed/fixed
+- disclaimer under outputs:
+  “Illustrative estimate only. Actual savings depend on your current vendor usage, program size, utilization, and internal recovery workflow.”
+
+Keep outputs focused on:
+- estimated annual outsourced spend avoided
+- estimated payback period
+- cost per athlete / program efficiency
+- projected in-house recovery savings
+
+Avoid adding speculative upside metrics unless strongly supported.
+
+6) SOFTEN OR REMOVE WEAK CLAIMS
+If the page includes claims such as:
+- “+25% athlete availability”
+- similar hard performance outcomes without strong support
+
+Either remove them or soften them.
+
+Replace with more defensible outcomes like:
+- Faster return-to-play support
+- More consistent recovery access
+- Reduced dependency on off-campus vendors
+- Better centralization of recovery workflows
+
+Do not use aggressive quantitative claims unless clearly supported by real evidence.
+
+7) “WHY ATHLETIC DEPARTMENTS ARE INVESTING” SECTION
+Keep this section, but make sure each point is operationally credible.
+
+Strong themes:
+- cost savings
+- multi-sport utility
+- no additional staff required
+- centralized access
+- reduced vendor fragmentation
+
+If one card currently relies on weak quantified claims, replace it with operational language that an athletic director or ATC would trust.
+
+8) REFRAME THE “COST OF NOT INVESTING” SECTION
+This section fits athletics better than some other industries, but it should still be more operational than emotional.
+
+If there is a vague card like “Lost Games,” replace or reframe it with:
+- More athlete downtime
+- Less recovery consistency
+- More off-site coordination
+- Slower return-to-play
+
+Keep “Recruiting” only if it is framed credibly as a facility/performance differentiator, not hype.
+
+Use polished, budget-aware, program-aware language.
+
+9) EQUIPMENT SECTION: FIX NAMING AND FRAME AS A UNIFIED SYSTEM
+Fix inconsistent naming such as:
+- “PEMF Device” vs “PEMF Treatment”
+
+Use one consistent naming system across all modalities.
+Prefer equipment-based naming such as:
+- HBOT Chamber
+- Red Light Therapy
+- Infrared Sauna
+- Compression Therapy
+- Lymphatic Drainage
+- PEMF Device
+
+Also add a section intro in this direction:
+“Seven clinical-grade modalities covering recovery, circulation, rehab support, and return-to-play readiness.”
+
+This section should feel like a unified athletics recovery system, not a random list of products.
+
+10) RECOVERY SYSTEM / ATHLETE EXPERIENCE SECTION
+Add or improve a section that explains the practical athletics value of the system.
+
+This section should communicate:
+- one pod can support multiple sports
+- useful across training, rehab, soreness management, and return-to-play workflows
+- designed for training room and performance facility integration
+- supports athletes without requiring fragmented off-site appointments
+
+Frame this as a system that supports the entire program, not just isolated modalities.
+
+11) INSTALLATION / TRAINING ROOM INTEGRATION
+The installation section is already strong, but make it more specific to athletics environments.
+
+Revise steps and subcopy to mention:
+- training room integration
+- fit within existing performance space
+- minimal disruption to athlete operations
+- staff onboarding and protocol familiarity
+- full support after install
+
+Keep a clear step-by-step flow:
+- custom layout
+- install
+- training
+- support
+
+12) TRUST / CREDIBILITY SECTION
+This is the biggest remaining weakness and needs the most attention.
+
+Upgrade the trust section so it feels athletics-specific and institutional.
+
+Add placeholders/components for:
+- university or academy logos
+- athletics facility photos
+- quote from an ATC / performance director / athletic director
+- sports served
+- athlete count
+- prior recovery setup
+- projected or actual savings
+- rollout timeline
+
+Do not invent details.
+If assets are missing, build polished placeholders clearly labeled for future real proof.
+
+13) ADD ONE MINI ATHLETICS CASE STUDY
+This is a high priority.
+
+Create a case study block structured like:
+- Facility type
+- Athlete count
+- Sports served
+- Prior recovery setup
+- Pod footprint / integration location
+- Projected or actual savings
+- Quote from ATC / performance director / athletic director
+
+If real data is unavailable, create a placeholder card labeled clearly for later replacement.
+
+14) FAQ: EXPAND PRACTICAL ATHLETICS QUESTIONS
+The FAQ is already well aligned. Add these questions if missing:
+- How many athletes can use the pod per day?
+- Which sports benefit most?
+- Can this fit in an existing training room?
+- What utilities or space requirements are needed?
+- How much oversight does the athletic training staff need to provide?
+
+Make answers concise, practical, and operations-focused.
+
+15) FORM: IMPROVE LEAD QUALIFICATION
+The form is already strong. Improve it further with more athletics-specific qualifiers.
+
+Recommended fields:
+- University / organization name
+- Role / title
+- Are you the decision-maker, evaluator, or recommender?
+- Number of sports programs
+- Total athletes
+- Division / conference level if relevant
+- Current recovery methods
+- Available space
+- Primary goal:
+  - Reduce outsourced spend
+  - Improve athlete recovery access
+  - Support recruiting
+  - Expand training room capabilities
+  - Centralize recovery for all sports
+- Budget status / funding source identified?
+- Target timeline
+- Would you like a custom savings analysis? Yes/No
+
+16) REDUCE FORM FRICTION
+If appropriate, convert the form into a 2-step flow.
+
+Step 1:
+- contact info
+- institution basics
+
+Step 2:
+- qualification details
+
+Also add:
+- progress indicator
+- clean validation
+- calculator values prefilled into the form if available
+- mobile-friendly layout
+- accessible field states
+
+17) DESIGN / UX REQUIREMENTS
+Maintain a collegiate athletics / performance aesthetic:
+- premium
+- clean
+- strong hierarchy
+- easy to scan
+- proof visible earlier
+- subtle motion only
+- no clutter
+- no generic wellness vibe
+- no overhyped sports-science tone
+
+18) COPY STYLE
+Use copy that feels:
+- credible
+- athletics-operator aware
+- budget-aware
+- performance-oriented
+- practical
+- concise
+
+Avoid:
+- generic wellness language
+- speculative business hype
+- unsupported performance claims
+- inconsistent equipment terminology
+
+19) IMPLEMENTATION NOTES
+Please:
+- inspect the existing page structure and update current components where possible
+- refactor repeated CTA labels into reusable constants/components if appropriate
+- keep calculator and form state stable
+- preserve responsiveness
+- keep the page deployable
+- add comments only where useful
+
+20) DELIVERABLES
+Provide:
+1. Updated page implementation
+2. Any new reusable components
+3. Short summary of what changed
+4. List of placeholders that still need real athletics-specific assets/data
+5. Any claims that should be legally/commercially verified before publishing
+
+Success criteria:
+- The page reads like a credible athletics operations and savings solution
+- The calculator feels transparent and believable
+- Proof appears earlier and feels athletics-specific
+- CTA language is more tailored to university buyers
+- Equipment is framed as a unified recovery system
+- The form better qualifies real institutional buyers
+- The page feels more specific, credible, and conversion-oriented
