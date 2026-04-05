@@ -203,16 +203,16 @@ export default function Hotels() {
                   className="space-y-4 mb-8"
                 >
                   {[
-                    { name: "Equinox Partnership Integrations", detail: "Premium fitness" },
-                    { name: "Reserve Padel Solemia", detail: "Sports & recreation" },
-                    { name: "Dr. Johnny Salomon's Medical Facility", detail: "Medical wellness" }
+                    { name: "Equinox at Merrick Park", sub: "Recovery Pod operational inside Equinox Merrick Park. Runs on existing Equinox staff." },
+                    { name: "Reserve Padel Sole Mia", sub: "Installed at South Florida's #1 padel facility. Post-match recovery drives repeat visits." },
+                    { name: "Dr. Johnny Salomon's Medical Facility", sub: "Integrated into Dr. Salomon's plastic surgery practice for post-procedure recovery protocols." }
                   ].map((partner, i) => (
-                    <motion.div key={i} variants={FADE_UP} className="flex items-center gap-3 bg-primary-foreground/10 px-4 py-3 rounded-lg backdrop-blur-sm">
-                      <CheckCircle2 className="w-5 h-5 text-secondary flex-shrink-0" />
-                      <div>
+                    <motion.div key={i} variants={FADE_UP} className="bg-primary-foreground/10 px-4 py-3 rounded-lg backdrop-blur-sm">
+                      <div className="flex items-center gap-3 mb-1">
+                        <CheckCircle2 className="w-5 h-5 text-secondary flex-shrink-0" />
                         <span className="font-medium text-primary-foreground">{partner.name}</span>
-                        <span className="text-primary-foreground/60 text-sm ml-2">— {partner.detail}</span>
                       </div>
+                      <p className="text-xs text-primary-foreground/60 ml-8 leading-relaxed">{partner.sub}</p>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -226,10 +226,10 @@ export default function Hotels() {
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <Camera className="w-4 h-4 text-secondary" />
-                    <span className="text-sm font-medium text-primary-foreground/70 uppercase tracking-wider">Case Study</span>
+                    <span className="text-sm font-medium text-primary-foreground/70 uppercase tracking-wider">Partnership Spotlight</span>
                   </div>
-                  <p className="text-sm text-primary-foreground/60 italic leading-relaxed">
-                    Case study placeholder — add property name, room count, launch timeline, utilization rate, and monthly revenue when available.
+                  <p className="text-sm text-primary-foreground/80 leading-relaxed">
+                    <strong>Equinox at Merrick Park, Coral Gables.</strong> BH Labs designed and installed a Recovery Pod inside Equinox at The Village of Merrick Park — one of South Florida's most prestigious fitness destinations. The installation was operational within 60 days, runs on existing staff, and has become a signature amenity for the Equinox membership experience.
                   </p>
                 </motion.div>
               </div>
@@ -454,9 +454,40 @@ export default function Hotels() {
                 title="Book a Strategy Call" 
                 subtitle="Tell us about your property and we'll prepare a tailored revenue assessment for your space."
               />
+              <p className="text-sm text-muted-foreground text-center mt-6">
+                Prefer to call? Reach us directly at{" "}
+                <a href="tel:+19548705814" className="text-primary font-medium hover:underline">(954) 870-5814</a>
+                {" "}or email{" "}
+                <a href="mailto:info@thebiohacklab.com" className="text-primary font-medium hover:underline">info@thebiohacklab.com</a>
+              </p>
             </div>
           </div>
         </section>
+
+        {/* FOOTER */}
+        <footer className="py-10 bg-primary text-primary-foreground border-t border-border">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-3">
+                <img src={logoLight} alt="BH Labs" className="w-10 h-10" />
+                <span className="font-sans font-semibold text-lg tracking-tight uppercase">BH Labs</span>
+              </div>
+              <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-primary-foreground/70">
+                <a href="https://thebiohacklab.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors">thebiohacklab.com</a>
+                <span className="hidden md:inline">|</span>
+                <a href="https://www.bh-labs.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors">bh-labs.com</a>
+                <span className="hidden md:inline">|</span>
+                <a href="mailto:info@thebiohacklab.com" className="hover:text-primary-foreground transition-colors">info@thebiohacklab.com</a>
+                <span className="hidden md:inline">|</span>
+                <a href="tel:+19548705814" className="hover:text-primary-foreground transition-colors">(954) 870-5814</a>
+              </div>
+            </div>
+            <div className="mt-6 pt-6 border-t border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-primary-foreground/50">
+              <p>&copy; {new Date().getFullYear()} BH Labs. All rights reserved. <a href="#" className="underline underline-offset-2 hover:text-primary-foreground/70">Privacy Policy</a></p>
+              <p className="max-w-xl text-center md:text-right leading-relaxed">All projections are illustrative and based on modeled assumptions. Actual results vary by property, utilization, pricing strategy, and market conditions.</p>
+            </div>
+          </div>
+        </footer>
       </main>
     </div>
   );

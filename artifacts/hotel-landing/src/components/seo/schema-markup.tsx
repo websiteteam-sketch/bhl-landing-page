@@ -117,8 +117,8 @@ export function SchemaMarkup({ page }: SchemaMarkupProps) {
       document.head.appendChild(meta);
     };
 
-    document.title = "Hotel Wellness Revenue Solution | BH Labs Recovery Pods — $25K+/Month";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Turn underused hotel space into $25K+/month in wellness revenue. BH Labs installs turnkey Recovery Pods — HBOT, red light therapy, infrared sauna, PEMF — with zero additional headcount. Under 2 month payback.");
+    document.title = "Recovery Pods for Hotels & Resorts | BH Labs — Turnkey Wellness Revenue";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Turn underused hotel space into $25K+/month wellness revenue. BH Labs Recovery Pods — turnkey install, zero additional headcount. Calculate your ROI.");
     setMeta("property", "og:title", "Hotel Wellness Revenue Solution | BH Labs Recovery Pods");
     setMeta("property", "og:description", "Turn underused hotel space into $25K+/month in new wellness revenue. Turnkey Recovery Pod installation with zero additional headcount.");
     setMeta("property", "og:url", pageUrl);

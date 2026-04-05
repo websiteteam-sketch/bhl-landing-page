@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 
 export function ROICalculator() {
   const [units, setUnits] = useState(200);
-  const [rate, setRate] = useState(5);
+  const [rate, setRate] = useState(10);
   const [occupancy, setOccupancy] = useState(70);
-  const [sessionsPerDay, setSessionsPerDay] = useState(10);
-  const [sessionPrice, setSessionPrice] = useState(20);
-  const [operatingCost, setOperatingCost] = useState(450);
+  const [sessionsPerDay, setSessionsPerDay] = useState(8);
+  const [sessionPrice, setSessionPrice] = useState(85);
+  const [operatingCost, setOperatingCost] = useState(1200);
   const [showMethodology, setShowMethodology] = useState(false);
 
   const results = useMemo(() => {
@@ -71,7 +71,7 @@ export function ROICalculator() {
                   <label htmlFor="hotel-rate" className="text-muted-foreground">Wellness Surcharge per Night</label>
                   <span className="font-semibold text-foreground text-base">${rate}</span>
                 </div>
-                <input id="hotel-rate" type="range" min={2} max={15} value={rate} onChange={(e) => setRate(Number(e.target.value))} className="w-full accent-emerald-600" aria-label={`Wellness Surcharge per Night: $${rate}`} />
+                <input id="hotel-rate" type="range" min={2} max={25} value={rate} onChange={(e) => setRate(Number(e.target.value))} className="w-full accent-emerald-600" aria-label={`Wellness Surcharge per Night: $${rate}`} />
                 <p className="text-xs text-muted-foreground mt-1">ADR surcharge applied to occupied rooms with wellness access</p>
               </div>
 
@@ -97,15 +97,19 @@ export function ROICalculator() {
                   <label htmlFor="hotel-price" className="text-muted-foreground">Average Session Price</label>
                   <span className="font-semibold text-foreground text-base">${sessionPrice}</span>
                 </div>
-                <input id="hotel-price" type="range" min={10} max={75} value={sessionPrice} onChange={(e) => setSessionPrice(Number(e.target.value))} className="w-full accent-emerald-600" aria-label={`Average Session Price: $${sessionPrice}`} />
+                <input id="hotel-price" type="range" min={25} max={300} step={5} value={sessionPrice} onChange={(e) => setSessionPrice(Number(e.target.value))} className="w-full accent-emerald-600" aria-label={`Average Session Price: $${sessionPrice}`} />
+                <p className="text-xs text-muted-foreground mt-1">Average price across guest recovery packages ($75-$300 range)</p>
+                <div className="mt-2 bg-secondary/50 rounded-lg p-3">
+                  <p className="text-xs text-muted-foreground leading-relaxed">BH Labs guest packages typically range from $75 (Morning Activation, 45 min) to $300+ (Full Longevity Session, 90+ min). The default reflects a blended average.</p>
+                </div>
               </div>
 
               <div>
                 <div className="flex justify-between text-sm mb-2">
                   <label htmlFor="hotel-operating" className="text-muted-foreground">Monthly Operating Cost</label>
-                  <span className="font-semibold text-foreground text-base">${operatingCost}</span>
+                  <span className="font-semibold text-foreground text-base">${operatingCost.toLocaleString()}</span>
                 </div>
-                <input id="hotel-operating" type="range" min={0} max={2000} step={50} value={operatingCost} onChange={(e) => setOperatingCost(Number(e.target.value))} className="w-full accent-emerald-600" aria-label={`Monthly Operating Cost: $${operatingCost}`} />
+                <input id="hotel-operating" type="range" min={0} max={5000} step={100} value={operatingCost} onChange={(e) => setOperatingCost(Number(e.target.value))} className="w-full accent-emerald-600" aria-label={`Monthly Operating Cost: $${operatingCost}`} />
                 <p className="text-xs text-muted-foreground mt-1">Estimated operating costs reflect basic staffing and utilization assumptions and may vary by property</p>
               </div>
             </div>
@@ -183,10 +187,10 @@ export function ROICalculator() {
                 animate={{ opacity: 1, height: "auto" }}
                 className="mt-3 bg-background border border-border rounded-xl p-5 text-sm text-muted-foreground space-y-2"
               >
-                <p><strong className="text-foreground">ADR Revenue</strong> = Number of rooms × occupancy rate × wellness surcharge per night × 30 days</p>
-                <p><strong className="text-foreground">A-La-Carte Revenue</strong> = Walk-in sessions per day × average session price × 30 days</p>
-                <p><strong className="text-foreground">Net Monthly Revenue</strong> = (ADR Revenue + A-La-Carte Revenue) − Monthly Operating Cost</p>
-                <p><strong className="text-foreground">Payback Period</strong> = ~$45,000 pod investment ÷ Net Monthly Revenue</p>
+                <p><strong className="text-foreground">ADR Revenue</strong> = Number of rooms x occupancy rate x wellness surcharge per night x 30 days</p>
+                <p><strong className="text-foreground">A-La-Carte Revenue</strong> = Walk-in sessions per day x average session price x 30 days</p>
+                <p><strong className="text-foreground">Net Monthly Revenue</strong> = (ADR Revenue + A-La-Carte Revenue) - Monthly Operating Cost</p>
+                <p><strong className="text-foreground">Payback Period</strong> = ~$45,000 pod investment / Net Monthly Revenue</p>
                 <p className="text-xs italic mt-3">Sample projections are based on modeled assumptions such as room count, occupancy, guest utilization, and pricing strategy. Actual results will vary by property.</p>
               </motion.div>
             )}

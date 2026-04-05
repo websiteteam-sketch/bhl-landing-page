@@ -1,0 +1,64 @@
+
+Update the following changes:
+
+1. Calculator defaults
+- Keep Number of Rooms at 200
+- Change Wellness Surcharge per Night from $5 to $10
+- Keep Average Occupancy Rate at 70%
+- Change Walk-In Sessions per Day from 10 to 8
+- Change Average Session Price from $20 to $85
+- Change Monthly Operating Cost from $450 to $1,200
+
+2. Helper text and pricing context
+- Add helper text under “Average Session Price”:
+  “Average price across guest recovery packages ($75–$300 range)”
+- Add a small contextual note near the session price slider:
+  “BH Labs guest packages typically range from $75 (Morning Activation, 45 min) to $300+ (Full Longevity Session, 90+ min). The default reflects a blended average.”
+
+3. Headline alignment
+- Keep the current “$25K+/Month” positioning as-is.
+- Do not lower the calculator output; let the calculator show the stronger upside.
+
+4. Case study / proof section
+- Replace any case study placeholder with this hotel-specific proof point:
+  “Partnership Spotlight: Equinox at Merrick Park, Coral Gables. BH Labs designed and installed a Recovery Pod inside Equinox at The Village of Merrick Park — one of South Florida’s most prestigious fitness destinations. The installation was operational within 60 days, runs on existing staff, and has become a signature amenity for the Equinox membership experience.”
+
+5. Social proof under logo section
+- Under the Equinox partnership logo, add:
+  “Recovery Pod operational inside Equinox Merrick Park. Runs on existing Equinox staff.”
+- Under Reserve Padel Sole Mia, add:
+  “Installed at South Florida’s #1 padel facility. Post-match recovery drives repeat visits.”
+- Under Dr. Johnny Salomon’s Medical Facility, add:
+  “Integrated into Dr. Salomon’s plastic surgery practice for post-procedure recovery protocols.”
+
+6. Industry quote
+- Keep the existing hotel quote about wellness travelers spending more.
+
+7. Contact form
+- Ensure form submissions send to info@thebiohacklab.com or the connected CRM endpoint
+- Add an auto-reply confirmation email to the submitter
+- If possible, connect the form to Calendly or HubSpot Meetings
+- If scheduling is not yet connected, add this line below the submit button:
+  “Prefer to call? Reach us directly at (954) 870-5814 or email info@thebiohacklab.com”
+
+8. Footer / legal
+Make sure the footer includes:
+- BH Labs logo
+- Link to thebiohacklab.com
+- Link to bh-labs.com
+- info@thebiohacklab.com
+- (954) 870-5814
+- Privacy Policy link
+- Disclaimer:
+  “All projections are illustrative and based on modeled assumptions. Actual results vary by property, utilization, pricing strategy, and market conditions.”
+
+9. SEO
+- Set page title to:
+  “Recovery Pods for Hotels & Resorts | BH Labs — Turnkey Wellness Revenue”
+- Add meta description:
+  “Turn underused hotel space into $25K+/month wellness revenue. BH Labs Recovery Pods — turnkey install, zero additional headcount. Calculate your ROI.”
+
+10. Images
+- Use a strong BH Labs interior/equipment hero image
+- Ensure all image paths load correctly
+- Prefer BH Labs real location photos over placeholders where available
