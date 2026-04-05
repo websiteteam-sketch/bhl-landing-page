@@ -4,10 +4,10 @@ import { Calculator, TrendingUp, DollarSign, Clock, Building, ChevronDown, Arrow
 import { Button } from "@/components/ui/button";
 
 export function ROICalculator() {
-  const [units, setUnits] = useState(150);
-  const [rate, setRate] = useState(30);
-  const [participation, setParticipation] = useState(70);
-  const [operatingCost, setOperatingCost] = useState(450);
+  const [units, setUnits] = useState(200);
+  const [rate, setRate] = useState(35);
+  const [participation, setParticipation] = useState(60);
+  const [operatingCost, setOperatingCost] = useState(600);
   const [showMethodology, setShowMethodology] = useState(false);
 
   const results = useMemo(() => {
@@ -85,9 +85,9 @@ export function ROICalculator() {
               <div>
                 <div className="flex justify-between text-sm mb-2">
                   <label htmlFor="res-operating" className="text-muted-foreground">Monthly Operating Cost</label>
-                  <span className="font-semibold text-foreground text-base">${operatingCost}</span>
+                  <span className="font-semibold text-foreground text-base">${operatingCost.toLocaleString()}</span>
                 </div>
-                <input id="res-operating" type="range" min={0} max={2000} step={50} value={operatingCost} onChange={(e) => setOperatingCost(Number(e.target.value))} className="w-full accent-emerald-600" aria-label={`Monthly Operating Cost: $${operatingCost}`} />
+                <input id="res-operating" type="range" min={0} max={3000} step={50} value={operatingCost} onChange={(e) => setOperatingCost(Number(e.target.value))} className="w-full accent-emerald-600" aria-label={`Monthly Operating Cost: $${operatingCost}`} />
                 <p className="text-xs text-muted-foreground mt-1">Estimated costs for utilities, basic maintenance, and consumables</p>
               </div>
             </div>

@@ -1,0 +1,55 @@
+Update the following changes:
+
+1. Calculator defaults
+- Change Number of Units from 150 to 200
+- Change Monthly Wellness Fee from $30 to $35
+- Change Participation/Adoption Rate from 70% to 60%
+- Change Monthly Operating Cost from $450 to $600
+
+2. Case study / proof section
+- Replace any case study placeholder with this residential-specific proof point:
+  “Partnership Spotlight: BH Labs Fort Lauderdale Flagship. BH Labs’ flagship location at 1785 SE 17th Street, Fort Lauderdale has served thousands of clients across 7 recovery modalities since opening. The operational model — turnkey equipment, trained staff, 30+ protocols — is the same system deployed into residential properties, hotels, and fitness clubs.”
+
+3. Social proof under logo section
+- Under the Equinox partnership logo, add:
+  “Recovery Pod operational inside Equinox Merrick Park. Runs on existing Equinox staff.”
+- Under Reserve Padel Sole Mia, add:
+  “Installed at South Florida’s #1 padel facility. Post-match recovery drives repeat visits.”
+- Under Dr. Johnny Salomon’s Medical Facility, add:
+  “Integrated into Dr. Salomon’s plastic surgery practice for post-procedure recovery protocols.”
+
+4. Industry quote
+- Add a quote block for the residential page:
+  “Wellness amenities in residential properties are emerging as a top-3 factor in purchase and renewal decisions for luxury buyers.”
+- Verify the source before publishing.
+- If the quote cannot be cleanly sourced, use this fallback:
+  “Properties with dedicated wellness offerings report higher satisfaction scores and competitive positioning.” — Global Wellness Institute
+
+5. Contact form
+- Ensure form submissions send to info@thebiohacklab.com or the connected CRM endpoint
+- Add an auto-reply confirmation email to the submitter
+- If possible, connect the form to Calendly or HubSpot Meetings
+- If scheduling is not yet connected, add this line below the submit button:
+  “Prefer to call? Reach us directly at (954) 870-5814 or email info@thebiohacklab.com”
+
+6. Footer / legal
+Make sure the footer includes:
+- BH Labs logo
+- Link to thebiohacklab.com
+- Link to bh-labs.com
+- info@thebiohacklab.com
+- (954) 870-5814
+- Privacy Policy link
+- Disclaimer:
+  “All projections are illustrative and based on modeled assumptions. Actual results vary by property, utilization, pricing strategy, and market conditions.”
+
+7. SEO
+- Set page title to:
+  “Recovery Pods for Luxury Residential & HOAs | BH Labs — Wellness Amenity ROI”
+- Add meta description:
+  “The amenity that pays for itself. BH Labs Recovery Pods for luxury residential — new wellness fee revenue, increased property value.”
+
+8. Images
+- Use premium residential and BH Labs wellness imagery
+- Prefer real BH Labs photos over stock when available
+- Ensure all image src paths are correct and loading

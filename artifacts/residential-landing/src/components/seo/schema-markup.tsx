@@ -111,8 +111,8 @@ export function SchemaMarkup() {
       document.head.appendChild(meta);
     };
 
-    document.title = "Luxury Residential Wellness Amenity Solution | BH Labs Recovery Pods";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Create a new wellness fee revenue stream for your luxury residential building. BH Labs installs turnkey Recovery Pods — a premium amenity that supports perceived property value with no dedicated staff required.");
+    document.title = "Recovery Pods for Luxury Residential & HOAs | BH Labs — Wellness Amenity ROI";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "The amenity that pays for itself. BH Labs Recovery Pods for luxury residential — new wellness fee revenue, increased property value.");
     setMeta("property", "og:title", "Luxury Residential Wellness Amenity | BH Labs Recovery Pods");
     setMeta("property", "og:description", "Create a new wellness fee revenue stream. Turnkey Recovery Pod installation for luxury residential buildings and HOA communities.");
     setMeta("property", "og:url", pageUrl);
