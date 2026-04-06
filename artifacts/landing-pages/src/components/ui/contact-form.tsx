@@ -248,8 +248,8 @@ export function ContactForm({ type, title, subtitle }: ContactFormProps) {
     const payload = { ...data, ...utmParams, pageUrl: window.location.href, formType: type };
 
     try {
-      // Send to serverless function (logs + email notification)
-      await fetch("/api/submit-form", {
+      // Send to email webhook (delivers to info@thebiohacklab.com + stephan.coles@thebiohacklab.com)
+      await fetch("https://bh-labs-forms.loca.lt", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
