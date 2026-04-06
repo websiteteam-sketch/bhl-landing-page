@@ -1,0 +1,6 @@
+[build]
+command = "pnpm run netlify:build"
+publish = "artifacts/landing-pages/dist/public"
+
+[build.environment]
+NODE_VERSION = "24"
