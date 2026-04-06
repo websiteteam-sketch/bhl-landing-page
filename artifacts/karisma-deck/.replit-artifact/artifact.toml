@@ -1,0 +1,31 @@
+kind = "slides"
+previewPath = "/karisma-deck/"
+title = "BH Labs Recovery Pod × Karisma Hotels"
+version = "1.0.0"
+id = "artifacts/karisma-deck"
+router = "path"
+
+[[integratedSkills]]
+name = "slides"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/karisma-deck/" ]
+localPort = 19681
+
+[services.development]
+run = "pnpm --filter @workspace/karisma-deck run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/karisma-deck", "run", "build" ]
+publicDir = "artifacts/karisma-deck/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19681"
+BASE_PATH = "/karisma-deck/"
