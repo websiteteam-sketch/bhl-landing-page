@@ -82,7 +82,7 @@ export default function SolutionSlide() {
 
           <div className="mt-auto pt-[2vh]">
             <p className="font-body text-muted text-[1.1vw] font-medium mb-[1vh]">
-              7 Evidence-Based Modalities
+              6 Evidence-Based Modalities
             </p>
             <div className="flex flex-wrap gap-[0.6vw]">
               {["HBOT", "Red Light", "PEMF", "IR Sauna", "Compression", "Lymphatic"].map((m) => (
