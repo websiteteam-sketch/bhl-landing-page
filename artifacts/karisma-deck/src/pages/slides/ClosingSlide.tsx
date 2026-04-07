@@ -55,15 +55,34 @@ export default function ClosingSlide() {
           </div>
         </div>
 
-        <div className="w-[40vw] h-[0.15vh] bg-accent/30 mb-[4vh]" />
+        <div className="w-[40vw] h-[0.15vh] bg-accent/30 mb-[3vh]" />
 
-        <p className="font-body text-white text-[1.6vw] font-medium">
-          Stephan Coles — Co-Founder
-        </p>
-        <p className="font-body text-white/70 text-[1.3vw] mt-[1vh]">
-          stephan.coles@thebiohacklab.com
-        </p>
-        <p className="font-body text-white/50 text-[1.2vw] mt-[0.5vh]">
+        <div className="flex gap-[6vw] items-start">
+          <div className="text-center">
+            <p className="font-body text-white text-[1.6vw] font-medium">
+              Natacha Coles
+            </p>
+            <p className="font-body text-accent text-[1.2vw] font-semibold mt-[0.3vh]">
+              Founder &amp; CEO
+            </p>
+            <p className="font-body text-white/60 text-[1.1vw] mt-[0.5vh]">
+              natacha@thebiohacklab.com
+            </p>
+          </div>
+          <div className="text-center">
+            <p className="font-body text-white text-[1.6vw] font-medium">
+              Stephan Coles
+            </p>
+            <p className="font-body text-accent text-[1.2vw] font-semibold mt-[0.3vh]">
+              Co-Founder
+            </p>
+            <p className="font-body text-white/60 text-[1.1vw] mt-[0.5vh]">
+              stephan.coles@thebiohacklab.com
+            </p>
+          </div>
+        </div>
+
+        <p className="font-body text-white/40 text-[1.1vw] mt-[2vh]">
           thebiohacklab.com
         </p>
       </div>
