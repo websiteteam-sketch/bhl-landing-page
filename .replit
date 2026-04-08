@@ -1,10 +1,19 @@
 modules = ["nodejs-24"]
 
 [[artifacts]]
+id = "artifacts/landing-pages"
+
+[[artifacts]]
 id = "artifacts/api-server"
 
 [[artifacts]]
 id = "artifacts/mockup-sandbox"
+
+[[artifacts]]
+id = "artifacts/karisma-deck"
+
+[[artifacts]]
+id = "artifacts/board-deck"
 
 [deployment]
 router = "application"

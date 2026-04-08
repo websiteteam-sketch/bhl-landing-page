@@ -1,0 +1,82 @@
+[
+  {
+    "id": "k-0001",
+    "position": 1,
+    "filepath": "src/pages/slides/TitleSlide.tsx",
+    "title": "Recovery Pod × Karisma",
+    "description": "Title slide with BH Labs and Karisma co-branding",
+    "speakerNotes": "Prepared specifically for Karisma Hotels & Resorts. Emphasize portfolio-wide opportunity."
+  },
+  {
+    "id": "k-0002",
+    "position": 2,
+    "filepath": "src/pages/slides/OpportunitySlide.tsx",
+    "title": "The Opportunity",
+    "description": "Market stats showing wellness economy opportunity",
+    "speakerNotes": "Wellness is $6.8T. Hotels with wellness programs see 108% higher RevPAR."
+  },
+  {
+    "id": "k-0003",
+    "position": 3,
+    "filepath": "src/pages/slides/ProblemSlide.tsx",
+    "title": "The Problem",
+    "description": "Traditional hotel spa economics and why they don't scale",
+    "speakerNotes": "Traditional spas cost $500K-$1.5M. Consumer franchises can't serve resorts. Gap in the market."
+  },
+  {
+    "id": "k-0004",
+    "position": 4,
+    "filepath": "src/pages/slides/SolutionSlide.tsx",
+    "title": "The Recovery Pod",
+    "description": "Recovery Pod specifications and equipment imagery",
+    "speakerNotes": "500-750 sqft, $49K, 7 modalities, under 90 days, zero additional staff."
+  },
+  {
+    "id": "k-0005",
+    "position": 5,
+    "filepath": "src/pages/slides/KarismaFitSlide.tsx",
+    "title": "Karisma Portfolio Fit",
+    "description": "Mapping of Recovery Pod configurations to each Karisma property",
+    "speakerNotes": "Each property gets a tailored configuration. Roatan is new build — design Recovery Center in from scratch. Pilot 1-2 properties first."
+  },
+  {
+    "id": "k-0006",
+    "position": 6,
+    "filepath": "src/pages/slides/ExperienceSlide.tsx",
+    "title": "The Guest Experience",
+    "description": "Session tiers showing protocol sequencing",
+    "speakerNotes": "Three tiers from $75 to $300+. Protocol sequencing is our IP — the order matters for outcomes."
+  },
+  {
+    "id": "k-0007",
+    "position": 7,
+    "filepath": "src/pages/slides/PricingSlide.tsx",
+    "title": "The Investment",
+    "description": "Pricing and what's included",
+    "speakerNotes": "$49K everything included. Total year 1: $47K-$72K. Multi-property discount for portfolio deployment."
+  },
+  {
+    "id": "k-0008",
+    "position": 8,
+    "filepath": "src/pages/slides/SocialProofSlide.tsx",
+    "title": "Proof of Concept",
+    "description": "Equinox case study with key metrics",
+    "speakerNotes": "900+ sessions/month at Equinox. 173% YoY growth. NPS 85. Hotel guests in pay-per-experience mindset unlock same intensity."
+  },
+  {
+    "id": "k-0009",
+    "position": 9,
+    "filepath": "src/pages/slides/ROICalculatorSlide.tsx",
+    "title": "ROI Calculator",
+    "description": "Interactive calculator with ADR surcharge, à la carte sessions, and multi-property portfolio multiplier",
+    "speakerNotes": "Key feature: multi-property slider. Show them 3 properties at moderate assumptions = $3M+ annual. ADR surcharge + à la carte = dual revenue streams."
+  },
+  {
+    "id": "k-0010",
+    "position": 10,
+    "filepath": "src/pages/slides/ClosingSlide.tsx",
+    "title": "Next Steps",
+    "description": "Closing slide with pilot → rollout framework",
+    "speakerNotes": "Pick 1-2 pilot properties. 90-day deployment. Prove demand. Roll across portfolio. Keep it simple."
+  }
+]

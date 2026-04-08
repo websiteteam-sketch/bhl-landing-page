@@ -115,7 +115,7 @@ export default function Athletics() {
         <section className="py-8 bg-secondary/30 border-b border-border">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-base md:text-lg text-foreground max-w-4xl mx-auto text-center leading-relaxed">
-              <strong>BH Labs installs turnkey Recovery Pods</strong> in university athletic facilities. A complete pod costs approximately <strong>$45,000</strong> — a fraction of annual outsourced recovery costs — and serves <strong>every sport, every athlete</strong>, with 30+ science-backed protocols. No additional staff required.
+              <strong>BH Labs installs turnkey Recovery Pods</strong> in university athletic facilities. A complete pod costs approximately <strong>$49,000</strong> — a fraction of annual outsourced recovery costs — and serves <strong>every sport, every athlete</strong>, with 30+ science-backed protocols. No additional staff required.
             </p>
           </div>
         </section>
@@ -199,7 +199,7 @@ export default function Athletics() {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent rounded-2xl flex items-end p-8">
                   <div className="text-primary-foreground">
                     <div className="text-sm font-medium uppercase tracking-wider mb-2 opacity-80">One-Time Investment</div>
-                    <div className="text-3xl md:text-5xl font-sans font-bold tracking-tighter text-secondary">~$45K</div>
+                    <div className="text-3xl md:text-5xl font-sans font-bold tracking-tighter text-secondary">~$49K</div>
                     <div className="text-sm mt-2 opacity-80">vs. $100K+/year in outsourced recovery</div>
                   </div>
                 </div>
@@ -357,13 +357,16 @@ export default function Athletics() {
                   className="space-y-4"
                 >
                   {[
-                    "Equinox Partnership Integrations",
-                    "Reserve Padel Solemia",
-                    "Dr. Johnny Salomon's Medical Facility"
+                    { name: "Equinox at Merrick Park", desc: "Recovery Pod operational inside one of South Florida's most prestigious fitness facilities." },
+                    { name: "Reserve Padel at Sole Mia", desc: "Installed at South Florida's #1 padel facility. Post-match recovery drives repeat visits." },
+                    { name: "Dr. Johnny Salomon Medical", desc: "Integrated into a leading plastic surgery practice for post-procedure recovery protocols." }
                   ].map((partner, i) => (
-                    <motion.div key={i} variants={FADE_UP} className="flex items-center gap-3 bg-primary-foreground/10 px-4 py-3 rounded-lg backdrop-blur-sm">
-                      <Activity className="w-5 h-5 text-secondary" />
-                      <span className="font-medium text-primary-foreground">{partner}</span>
+                    <motion.div key={i} variants={FADE_UP} className="flex items-start gap-3 bg-primary-foreground/10 px-4 py-3 rounded-lg backdrop-blur-sm">
+                      <Activity className="w-5 h-5 mt-1 text-secondary flex-shrink-0" />
+                      <div>
+                        <span className="font-medium text-primary-foreground">{partner.name}</span>
+                        <p className="text-sm text-primary-foreground/60 mt-0.5">{partner.desc}</p>
+                      </div>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -382,6 +385,9 @@ export default function Athletics() {
                   <h3 className="text-2xl md:text-3xl font-serif mb-6 text-primary-foreground leading-snug">
                     "Recovery technology is the new arms race in college athletics recruiting."
                   </h3>
+                  <p className="text-sm text-primary-foreground/60 mt-4 italic">
+                    "Recovery infrastructure is becoming standard at Division I programs — the majority of Power 5 athletic departments now invest in dedicated recovery facilities." — NCAA Sports Science Institute
+                  </p>
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
                       <Shield className="w-5 h-5 text-primary" />
@@ -399,7 +405,7 @@ export default function Athletics() {
 
         <FAQSection items={[
           { question: "How does a Recovery Pod benefit a university athletics program?", answer: "A Recovery Pod provides 7 clinical-grade modalities (HBOT, red light, infrared sauna, compression, PEMF, lymphatic drainage) that accelerate return-to-play, reduce injury downtime, and serve every sport — all in one on-site installation." },
-          { question: "How does the cost compare to outsourcing recovery?", answer: "A complete Recovery Pod costs approximately $45,000 — a one-time investment that replaces $100K+/year in outsourced cryo sessions, off-campus recovery centers, and fragmented treatment services." },
+          { question: "How does the cost compare to outsourcing recovery?", answer: "A complete Recovery Pod costs approximately $49,000 — a one-time investment that replaces $100K+/year in outsourced cryo sessions, off-campus recovery centers, and fragmented treatment services." },
           { question: "Can one pod serve all our sports programs?", answer: "Yes. The Recovery Pod is designed to serve athletes across every sport — football, basketball, soccer, track, swimming, and more. 30+ protocols cover sport-specific recovery needs." },
           { question: "Does our athletic training staff need certification?", answer: "BH Labs provides comprehensive training and certification for your athletic trainers. No additional hires required — your existing staff will be fully equipped to run every protocol." },
           { question: "How does recovery technology help with recruiting?", answer: "Top recruits compare facilities. A Recovery Pod signals that your program invests in athlete health and performance, giving you a tangible recruiting advantage over programs without dedicated recovery." },
@@ -447,6 +453,10 @@ export default function Athletics() {
                   />
                 </motion.div>
               )}
+              
+              <p className="text-center text-sm text-muted-foreground mt-6">
+                Prefer to call? Reach us directly at <a href="tel:9548705814" className="text-primary hover:underline font-medium">(954) 870-5814</a> or email <a href="mailto:info@thebiohacklab.com" className="text-primary hover:underline font-medium">info@thebiohacklab.com</a>
+              </p>
             </div>
           </div>
         </section>

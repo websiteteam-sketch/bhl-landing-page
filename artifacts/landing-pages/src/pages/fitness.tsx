@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ContactForm } from "@/components/ui/contact-form";
+import { ROICalculator } from "@/components/ui/roi-calculator";
 import { FAQSection } from "@/components/ui/faq-section";
 import { SchemaMarkup } from "@/components/seo/schema-markup";
 import { Button } from "@/components/ui/button";
@@ -109,10 +110,13 @@ export default function Fitness() {
           </motion.a>
         </section>
 
+        {/* ROI Calculator */}
+        <ROICalculator type="fitness" />
+
         <section className="py-8 bg-secondary/30 border-b border-border">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-base md:text-lg text-foreground max-w-4xl mx-auto text-center leading-relaxed">
-              <strong>BH Labs installs turnkey Recovery Pods</strong> in gyms, fitness studios, and padel clubs. A complete pod costs approximately <strong>$45,000</strong>, enables a <strong>premium membership tier</strong>, boosts member retention by up to <strong>30%</strong>, and pays for itself through higher-value memberships. No additional staff required.
+              <strong>BH Labs installs turnkey Recovery Pods</strong> in gyms, fitness studios, and padel clubs. A complete pod costs approximately <strong>$49,000</strong>, enables a <strong>premium membership tier</strong>, boosts member retention by up to <strong>30%</strong>, and pays for itself through higher-value memberships. No additional staff required.
             </p>
           </div>
         </section>
@@ -354,13 +358,16 @@ export default function Fitness() {
                   className="space-y-4"
                 >
                   {[
-                    "Equinox Partnership Integrations",
-                    "Reserve Padel Solemia",
-                    "Dr. Johnny Salomon's Medical Facility"
+                    { name: "Equinox at Merrick Park", desc: "Recovery Pod operational inside one of South Florida's most prestigious fitness facilities." },
+                    { name: "Reserve Padel at Sole Mia", desc: "Installed at South Florida's #1 padel facility. Post-match recovery drives repeat visits." },
+                    { name: "Dr. Johnny Salomon Medical", desc: "Integrated into a leading plastic surgery practice for post-procedure recovery protocols." }
                   ].map((partner, i) => (
-                    <motion.div key={i} variants={FADE_UP} className="flex items-center gap-3 bg-primary-foreground/10 px-4 py-3 rounded-lg backdrop-blur-sm">
-                      <Activity className="w-5 h-5 text-secondary" />
-                      <span className="font-medium text-primary-foreground">{partner}</span>
+                    <motion.div key={i} variants={FADE_UP} className="flex items-start gap-3 bg-primary-foreground/10 px-4 py-3 rounded-lg backdrop-blur-sm">
+                      <Activity className="w-5 h-5 mt-1 text-secondary flex-shrink-0" />
+                      <div>
+                        <span className="font-medium text-primary-foreground">{partner.name}</span>
+                        <p className="text-sm text-primary-foreground/60 mt-0.5">{partner.desc}</p>
+                      </div>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -379,6 +386,9 @@ export default function Fitness() {
                   <h3 className="text-2xl md:text-3xl font-serif mb-6 text-primary-foreground leading-snug">
                     "Recovery is the #1 amenity driving premium membership upgrades in fitness."
                   </h3>
+                  <p className="text-sm text-primary-foreground/60 mt-4 italic">
+                    "Clubs with recovery amenities report 15-30% higher member retention and increased ancillary revenue per member." — IHRSA Health Club Industry Report, 2024
+                  </p>
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
                       <Star className="w-5 h-5 text-primary" />
@@ -396,7 +406,7 @@ export default function Fitness() {
 
         <FAQSection items={[
           { question: "How does a Recovery Pod help with member retention?", answer: "Members who use recovery equipment stay 30% longer on average. A Recovery Pod gives members a reason to upgrade to a premium tier and keeps them coming back — reducing churn and increasing lifetime value." },
-          { question: "What's the ROI for a fitness facility?", answer: "A BH Labs Recovery Pod costs approximately $45,000. By launching a premium recovery membership tier ($50-100/month per member), most facilities see full payback within 3-6 months while generating recurring revenue." },
+          { question: "What's the ROI for a fitness facility?", answer: "A BH Labs Recovery Pod costs approximately $49,000. By launching a premium recovery membership tier ($50-100/month per member), most facilities see full payback within 3-6 months while generating recurring revenue." },
           { question: "Does our staff need special training?", answer: "BH Labs provides comprehensive staff training and certification. Your existing team will be fully equipped to guide members through 30+ recovery protocols." },
           { question: "How much space does a Recovery Pod require?", answer: "Our in-house architect designs the pod layout to fit your available space. Whether you have a spare room or an open area, we'll configure equipment to maximize efficiency." },
           { question: "What types of fitness facilities use Recovery Pods?", answer: "Gyms, CrossFit boxes, padel clubs, boutique fitness studios, martial arts academies, and multi-sport facilities. Any facility looking to differentiate with premium recovery." },
@@ -412,6 +422,9 @@ export default function Fitness() {
                 title="Get Your Custom Recovery Pod"
                 subtitle="Tell us about your facility and we'll design a recovery solution that drives retention and revenue."
               />
+              <p className="text-center text-sm text-muted-foreground mt-6">
+                Prefer to call? Reach us directly at <a href="tel:9548705814" className="text-primary hover:underline font-medium">(954) 870-5814</a> or email <a href="mailto:info@thebiohacklab.com" className="text-primary hover:underline font-medium">info@thebiohacklab.com</a>
+              </p>
             </div>
           </div>
         </section>
